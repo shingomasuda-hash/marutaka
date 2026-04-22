@@ -127,37 +127,37 @@
     .sec-head--center { text-align: center; }
     .sec-head--center::after { margin-inline: auto; }
 
-    /* Scroll reveal */
-    .reveal {
+    /* -------------------------------------------------------
+       Scroll reveal
+       JS が動けばフェードアップ。動かなくてもコンテンツは常に見える。
+       html.js-ready クラスがある場合のみ opacity:0 を適用。
+    ------------------------------------------------------- */
+    html.js-ready .reveal {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(22px);
       transition: opacity .65s var(--ease), transform .65s var(--ease);
     }
-    .reveal.in { opacity: 1; transform: none; }
-    .reveal-d1 { transition-delay: .1s; }
-    .reveal-d2 { transition-delay: .2s; }
-    .reveal-d3 { transition-delay: .3s; }
-    .reveal-d4 { transition-delay: .4s; }
+    html.js-ready .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+    html.js-ready .reveal-d1 { transition-delay: .1s; }
+    html.js-ready .reveal-d2 { transition-delay: .2s; }
+    html.js-ready .reveal-d3 { transition-delay: .3s; }
+    html.js-ready .reveal-d4 { transition-delay: .4s; }
 
-    /* Hero — スクロール不要なので直接フェードイン */
+    /* Hero — CSSキーフレームで確実にフェードイン */
     .hero-anim {
-      opacity: 0;
-      animation: heroFadeUp .8s var(--ease) forwards;
+      animation: heroFadeUp .8s var(--ease) both;
     }
     .hero-anim-d1 { animation-delay: .15s; }
-    .hero-anim-d2 { animation-delay: .3s; }
+    .hero-anim-d2 { animation-delay: .3s;  }
     .hero-anim-d3 { animation-delay: .45s; }
-    .hero-anim-d4 { animation-delay: .6s; }
+    .hero-anim-d4 { animation-delay: .6s;  }
 
     @keyframes heroFadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: none; }
-    }
-
-    /* JS無効・タイムアウト時のフォールバック */
-    .reveal-fallback .reveal {
-      opacity: 1 !important;
-      transform: none !important;
     }
 
     /* =====================================================
@@ -2596,6 +2596,9 @@
     });
 
     // Scroll reveal
+    // 1. まず html に js-ready を付与（これで opacity:0 が有効になる）
+    document.documentElement.classList.add('js-ready');
+
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -2603,7 +2606,7 @@
           revealObs.unobserve(e.target);
         }
       });
-    }, { threshold: 0 }); // 0 = 1pxでも見えたら発火
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
     function watchReveals() {
       document.querySelectorAll('.reveal:not(.in)').forEach(el => revealObs.observe(el));
@@ -2611,10 +2614,10 @@
     watchReveals();
     window.watchReveals = watchReveals;
 
-    // フォールバック: 1.5秒後に未発火のrevealを強制表示
+    // フォールバック: 2秒後に残った reveal を強制表示
     setTimeout(() => {
       document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
-    }, 1500);
+    }, 2000);
   </script>
 
 </body>
