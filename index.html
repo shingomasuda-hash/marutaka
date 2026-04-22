@@ -815,6 +815,95 @@
       }
     }
 
+    /* =====================================================
+       10. MISSION
+       ===================================================== */
+    .mission__layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: start;
+    }
+
+    .mission__h2 {
+      font-family: var(--f-serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.45;
+      letter-spacing: .03em;
+      color: #fff;
+      margin: .5rem 0 1.5rem;
+    }
+    .mission__h2 em {
+      font-style: normal;
+      color: var(--c-accent-lt);
+    }
+
+    .mission__body {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .mission__body p {
+      font-size: .95rem;
+      line-height: 2;
+      color: rgba(255,255,255,.72);
+    }
+
+    .mission__values {
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+    }
+    .mission__values li {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      font-size: .9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.85);
+    }
+
+    .mission__value-icon {
+      color: var(--c-accent);
+      font-size: .6rem;
+      flex-shrink: 0;
+    }
+
+    .mission__video {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .9rem;
+    }
+
+    .mission__video .video-wrap--vertical {
+      max-width: 200px;
+      width: 200px;
+    }
+
+    .mission__ceo-name {
+      font-size: .82rem;
+      color: rgba(255,255,255,.55);
+      text-align: center;
+      letter-spacing: .06em;
+    }
+
+    @media (max-width: 768px) {
+      .mission__layout {
+        grid-template-columns: 1fr;
+      }
+      .mission__video {
+        order: -1;
+      }
+      .mission__video .video-wrap--vertical {
+        max-width: 160px;
+        width: 160px;
+        margin-inline: auto;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1107,6 +1196,64 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ===========================================
+       MISSION — わたしたちの想い
+       =========================================== -->
+  <section class="section section--dark mission" id="mission">
+    <div class="container">
+
+      <div class="mission__layout">
+
+        <!-- テキスト側 -->
+        <div class="mission__text">
+          <span class="sec-label reveal">Our Mission</span>
+          <h2 class="mission__h2 reveal reveal-d1">
+            モノを運ぶのではない。<br />
+            <em>場をつくる</em>のだ。
+          </h2>
+
+          <div class="mission__body reveal reveal-d2">
+            <p>私たちの仕事は、図面通りに作業をこなすことではありません。
+            その空間を使う人が「ここに来てよかった」と感じる瞬間をつくることです。</p>
+
+            <p>美術館の壁一枚、ホテルのロビーのカーテン一枚にも、
+            設計者の意図と使う人への想いが宿っています。
+            私たちはその意図を読み取り、さらに良くする提案ができる集団でありたいと思っています。</p>
+
+            <p>一人ひとりが「自分のお店」を持つような感覚で、
+            主体的に、誇りを持って、空間づくりに関わってほしい。
+            それが丸髙工業の文化です。</p>
+          </div>
+
+          <!-- 価値観リスト -->
+          <ul class="mission__values reveal reveal-d3">
+            <li><span class="mission__value-icon">◆</span>ただモノを売る・流す仕事ではない</li>
+            <li><span class="mission__value-icon">◆</span>空間や場をつくる仕事</li>
+            <li><span class="mission__value-icon">◆</span>一人ひとりが主体的に関わる</li>
+            <li><span class="mission__value-icon">◆</span>技術・提案・考える力が活きる</li>
+          </ul>
+        </div>
+
+        <!-- 社長メッセージ動画 -->
+        <!-- [REPLACE] data-yt-id に社長メッセージのYouTube動画IDを設定 -->
+        <div class="mission__video reveal reveal-d2">
+          <div class="video-wrap video-wrap--vertical" data-yt-id="CEO_MESSAGE_VIDEO_ID">
+            <div class="video-ph">
+              <button class="video-ph__btn" aria-label="動画を再生">
+                <span class="video-ph__play">▶</span>
+              </button>
+              <p class="video-ph__title">社長メッセージ</p>
+              <p class="video-ph__note">縦型動画（9:16）推奨</p>
+            </div>
+          </div>
+          <!-- [REPLACE] 社長名・役職を変更 -->
+          <p class="mission__ceo-name">代表取締役　◯◯ ◯◯</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
