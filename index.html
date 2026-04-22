@@ -1288,6 +1288,94 @@
       .modal { padding: 1.75rem 1.25rem; }
     }
 
+    /* =====================================================
+       13. FAQ
+       ===================================================== */
+    .faq__list {
+      max-width: 760px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .faq__item {
+      border: 1.5px solid var(--c-border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: var(--c-bg);
+      transition: border-color var(--dur) var(--ease);
+    }
+    .faq__item.is-open { border-color: var(--c-accent); }
+
+    .faq__q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      font-size: .95rem;
+      font-weight: 700;
+      line-height: 1.6;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--c-text);
+    }
+
+    .faq__q-mark {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      color: #fff;
+      font-family: var(--f-en);
+      font-size: .8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .faq__q-text { flex: 1; }
+
+    .faq__q-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      position: relative;
+      margin-left: auto;
+    }
+    .faq__q-icon::before,
+    .faq__q-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 12px;
+      height: 1.5px;
+      background: var(--c-text-sub);
+      border-radius: 2px;
+      transform: translate(-50%, -50%);
+      transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+    }
+    .faq__q-icon::after { transform: translate(-50%,-50%) rotate(90deg); }
+    .faq__item.is-open .faq__q-icon::after { transform: translate(-50%,-50%) rotate(0deg); opacity: 0; }
+
+    .faq__a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s var(--ease);
+    }
+
+    .faq__a-inner {
+      padding: 0 1.5rem 1.25rem calc(1.5rem + 28px + 1rem);
+      font-size: .9rem;
+      line-height: 1.9;
+      color: var(--c-text-sub);
+    }
+
   </style>
 </head>
 <body>
@@ -1842,6 +1930,24 @@
     </div>
   </div>
 
+  <!-- ===========================================
+       FAQ
+       =========================================== -->
+  <section class="section faq" id="faq">
+    <div class="container">
+
+      <div class="sec-head sec-head--center reveal">
+        <span class="sec-label">FAQ</span>
+        <h2 class="sec-h2">よくある質問</h2>
+        <p class="sec-sub">応募前の不安を、正直にお答えします。</p>
+      </div>
+
+      <!-- JSで生成 / [REPLACE] FAQデータは下部のFAQ_ITEMS配列で管理 -->
+      <div class="faq__list" id="faqList"></div>
+
+    </div>
+  </section>
+
   <!-- 次のセクションをここに追加していく -->
 
   <!-- ===========================================
@@ -2066,6 +2172,90 @@
       closeBtn.addEventListener('click', closeModal);
       overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
       document.addEventListener('keydown', e => { if (e.key === 'Escape' && !overlay.hidden) closeModal(); });
+    })();
+
+    /* ==========================================================
+       FAQ DATA
+       [REPLACE] 以下の配列を編集してFAQを管理します
+       ========================================================== */
+    const FAQ_ITEMS = [
+      {
+        q: "未経験でも応募できますか？",
+        a: "はい、大歓迎です。現在活躍しているスタッフの中にも、全く異なる業種からの転職者や、新卒入社のメンバーが多数います。業界経験よりも「丁寧にやりたい」「ちゃんとした仕事がしたい」という気持ちを大切にしています。",
+      },
+      {
+        q: "経験者はどのような経験が活かせますか？",
+        a: "内装・インテリア・カーテン・テント・設備施工などの施工経験はもちろん、現場管理・図面読解・顧客折衝の経験も大いに活かせます。「作業者」ではなく「提案できる専門家」として活躍できる環境です。",
+      },
+      {
+        q: "文系・理系は関係ありますか？",
+        a: "関係ありません。大切なのは学歴ではなく、空間づくりへの興味と「考えて動こうとする姿勢」です。実際に文系出身のスタッフも多数活躍しています。",
+      },
+      {
+        q: "女性でも働けますか？",
+        a: "もちろんです。現場仕事というイメージがあるかもしれませんが、デザイン・提案・コーディネートなど女性の感性が活きる場面も多くあります。働きやすい環境づくりに取り組んでいます。",
+      },
+      {
+        q: "配属はどのように決まりますか？",
+        a: "スペースクリエーション事業部とマイスター事業部、それぞれの特性と本人の希望・経験を踏まえて決定します。面接の段階でご希望をお聞きし、できる限り希望に沿った配属を行います。",
+      },
+      {
+        q: "まずは話を聞くだけでも大丈夫ですか？",
+        a: "まったく問題ありません。「転職を迷っている」「どんな仕事か知りたい」という段階でも歓迎します。選考を前提としない会社説明・見学も随時対応していますので、お気軽にお問い合わせください。",
+      },
+      {
+        q: "どんな人が活躍していますか？",
+        a: "「自分で考えて動ける人」が最も活躍しています。指示を待つのではなく、案件をどう進めるか自分なりに考え、必要なら提案できる人。経験の有無より、その姿勢を大切にしている会社です。",
+      },
+      {
+        q: "資格がないと難しいですか？",
+        a: "資格は入社後に取得できます。会社として資格取得を全面的にサポートしており、費用補助や勉強時間の確保なども対応しています。まずは「やってみたい」という気持ちが大切です。",
+      },
+    ];
+
+    /* FAQ アコーディオン */
+    (function () {
+      const list = document.getElementById('faqList');
+      if (!list) return;
+
+      FAQ_ITEMS.forEach((item, i) => {
+        const el = document.createElement('div');
+        el.className = 'faq__item reveal';
+        el.style.transitionDelay = (i % 4 * 0.07) + 's';
+        el.innerHTML = `
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-a-${i}">
+            <span class="faq__q-mark">Q</span>
+            <span class="faq__q-text">${item.q}</span>
+            <span class="faq__q-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" id="faq-a-${i}" role="region">
+            <div class="faq__a-inner">${item.a}</div>
+          </div>
+        `;
+
+        const btn   = el.querySelector('.faq__q');
+        const panel = el.querySelector('.faq__a');
+        const inner = el.querySelector('.faq__a-inner');
+
+        btn.addEventListener('click', () => {
+          const isOpen = el.classList.contains('is-open');
+          // 他を閉じる
+          document.querySelectorAll('.faq__item.is-open').forEach(other => {
+            other.classList.remove('is-open');
+            other.querySelector('.faq__q').setAttribute('aria-expanded', 'false');
+            other.querySelector('.faq__a').style.maxHeight = '0';
+          });
+          if (!isOpen) {
+            el.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+            panel.style.maxHeight = inner.scrollHeight + 'px';
+          }
+        });
+
+        list.appendChild(el);
+      });
+
+      if (window.watchReveals) watchReveals();
     })();
 
     // Header scroll
