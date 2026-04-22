@@ -904,6 +904,142 @@
       }
     }
 
+    /* =====================================================
+       11. TARGET
+       ===================================================== */
+    .target__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .target__card {
+      border-radius: var(--r-xl);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      border: 1.5px solid var(--c-border);
+      background: var(--c-bg-soft);
+    }
+
+    .target__card--exp {
+      background: var(--c-bg-dark);
+      border-color: var(--c-bg-dark);
+      color: #fff;
+    }
+
+    .target__card-head { display: flex; flex-direction: column; gap: .75rem; }
+
+    .target__tag {
+      display: inline-block;
+      padding: .3em 1em;
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      align-self: flex-start;
+    }
+    .target__tag--new { background: var(--c-green);   color: #fff; }
+    .target__tag--exp { background: var(--c-accent);  color: #fff; }
+
+    .target__h3 {
+      font-family: var(--f-serif);
+      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: .02em;
+    }
+
+    .target__list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      flex: 1;
+    }
+
+    .target__item {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+    }
+
+    .target__check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--c-green);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: .15rem;
+    }
+    .target__check--gold { background: var(--c-accent); }
+
+    .target__item strong {
+      display: block;
+      font-size: .92rem;
+      font-weight: 700;
+      margin-bottom: .25rem;
+    }
+    .target__item p {
+      font-size: .85rem;
+      line-height: 1.8;
+      color: var(--c-text-sub);
+    }
+    .target__card--exp .target__item p {
+      color: rgba(255,255,255,.6);
+    }
+
+    .target__card-foot { margin-top: auto; }
+
+    /* スタッフインタビュー */
+    .target__interview {
+      background: var(--c-bg-soft);
+      border-radius: var(--r-xl);
+      padding: clamp(2rem, 4vw, 3rem);
+    }
+
+    .target__interview-videos {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .target__interview-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .9rem;
+    }
+
+    .target__interview-item .video-wrap--vertical {
+      max-width: 180px;
+      width: 180px;
+    }
+
+    .target__interview-caption {
+      font-size: .82rem;
+      text-align: center;
+      line-height: 1.7;
+      color: var(--c-text-sub);
+    }
+    .target__interview-caption small {
+      font-size: .75rem;
+      color: var(--c-text-sub);
+    }
+
+    @media (max-width: 680px) {
+      .target__grid { grid-template-columns: 1fr; }
+      .target__interview-videos { flex-direction: column; align-items: center; }
+    }
+
   </style>
 </head>
 <body>
@@ -1254,6 +1390,150 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ===========================================
+       TARGET — 未経験・経験者へのメッセージ
+       =========================================== -->
+  <section class="section target" id="target">
+    <div class="container">
+
+      <div class="sec-head sec-head--center reveal">
+        <span class="sec-label">For You</span>
+        <h2 class="sec-h2">あなたへのメッセージ</h2>
+        <p class="sec-sub">経験の有無に関わらず、ここでは「考えて動ける人」が活躍できます。</p>
+      </div>
+
+      <div class="target__grid">
+
+        <!-- 未経験・新卒の方へ -->
+        <div class="target__card target__card--new reveal">
+          <div class="target__card-head">
+            <span class="target__tag target__tag--new">未経験・新卒の方へ</span>
+            <h3 class="target__h3">「やってみたい」が、<br />ここでは「できる」に変わる。</h3>
+          </div>
+          <ul class="target__list">
+            <li class="target__item">
+              <span class="target__check">✓</span>
+              <div>
+                <strong>基礎から丁寧に指導</strong>
+                <p>職人歴のある先輩が基礎をしっかり教えます。いきなり一人では動かせないので安心してください。</p>
+              </div>
+            </li>
+            <li class="target__item">
+              <span class="target__check">✓</span>
+              <div>
+                <strong>技術だけでなく「考える力」が身につく</strong>
+                <p>図面を読む・提案する・段取りを組む——作業者ではなく、考えて動けるプロへ成長できます。</p>
+              </div>
+            </li>
+            <li class="target__item">
+              <span class="target__check">✓</span>
+              <div>
+                <strong>完成の達成感がある仕事</strong>
+                <p>自分が手がけた空間が完成する喜びは、この仕事ならでは。「つくった」という実感が毎回あります。</p>
+              </div>
+            </li>
+            <li class="target__item">
+              <span class="target__check">✓</span>
+              <div>
+                <strong>文系・他業種からの転職者も活躍中</strong>
+                <p>業界知識よりも、「丁寧にやりたい」「ちゃんとしたい」という気持ちを大切にしています。</p>
+              </div>
+            </li>
+          </ul>
+          <div class="target__card-foot">
+            <a href="#jobs" class="btn btn--outline-gold">未経験の募集を見る →</a>
+          </div>
+        </div>
+
+        <!-- 経験者・転職の方へ -->
+        <div class="target__card target__card--exp reveal reveal-d2">
+          <div class="target__card-head">
+            <span class="target__tag target__tag--exp">経験者・転職の方へ</span>
+            <h3 class="target__h3">あなたの「経験」が、<br />ここで最大限に活きる。</h3>
+          </div>
+          <ul class="target__list">
+            <li class="target__item">
+              <span class="target__check target__check--gold">✓</span>
+              <div>
+                <strong>早期から裁量ある仕事を任せる</strong>
+                <p>経験があれば、指示待ちではなく主体的に動いてほしい。あなたの判断と提案を尊重します。</p>
+              </div>
+            </li>
+            <li class="target__item">
+              <span class="target__check target__check--gold">✓</span>
+              <div>
+                <strong>難易度の高い案件に挑める</strong>
+                <p>美術館・ホテル・商業施設——他社では断られるような案件で、あなたのスキルを本当に試せます。</p>
+              </div>
+            </li>
+            <li class="target__item">
+              <span class="target__check target__check--gold">✓</span>
+              <div>
+                <strong>提案力・専門性がキャリアに直結する</strong>
+                <p>「作業者」ではなく「提案できる専門家」として評価される環境があります。</p>
+              </div>
+            </li>
+            <li class="target__item">
+              <span class="target__check target__check--gold">✓</span>
+              <div>
+                <strong>個人商店感覚の自立した働き方</strong>
+                <p>自分の名前で仕事をする感覚。裁量と責任が、本物のやりがいに変わります。</p>
+              </div>
+            </li>
+          </ul>
+          <div class="target__card-foot">
+            <a href="#jobs" class="btn btn--gold">経験者の募集を見る →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- スタッフインタビュー動画 -->
+      <div class="target__interview reveal">
+        <div class="sec-head sec-head--center" style="margin-bottom:2rem;">
+          <span class="sec-label">Staff Interview</span>
+          <h3 class="sec-h2" style="font-size:clamp(1.2rem,2.5vw,1.6rem);">先輩スタッフの声</h3>
+        </div>
+        <div class="target__interview-videos">
+          <!-- [REPLACE] data-yt-id にスタッフインタビューのYouTube動画IDを設定 -->
+          <div class="target__interview-item">
+            <div class="video-wrap video-wrap--vertical" data-yt-id="STAFF_01_VIDEO_ID">
+              <div class="video-ph">
+                <button class="video-ph__btn" aria-label="動画を再生">
+                  <span class="video-ph__play">▶</span>
+                </button>
+                <p class="video-ph__title">スタッフインタビュー 01</p>
+                <p class="video-ph__note">経験者入社</p>
+              </div>
+            </div>
+            <!-- [REPLACE] スタッフ情報を変更 -->
+            <p class="target__interview-caption">
+              ◯◯さん / スペースクリエーション事業部<br />
+              <small>入社5年・経験者入社</small>
+            </p>
+          </div>
+          <div class="target__interview-item">
+            <div class="video-wrap video-wrap--vertical" data-yt-id="STAFF_02_VIDEO_ID">
+              <div class="video-ph">
+                <button class="video-ph__btn" aria-label="動画を再生">
+                  <span class="video-ph__play">▶</span>
+                </button>
+                <p class="video-ph__title">スタッフインタビュー 02</p>
+                <p class="video-ph__note">未経験入社</p>
+              </div>
+            </div>
+            <!-- [REPLACE] スタッフ情報を変更 -->
+            <p class="target__interview-caption">
+              △△さん / マイスター事業部<br />
+              <small>入社3年・未経験入社</small>
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
