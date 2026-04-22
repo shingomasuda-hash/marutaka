@@ -648,6 +648,173 @@
       .reasons__grid { grid-template-columns: 1fr; }
     }
 
+    /* =====================================================
+       9. OUR WORK
+       ===================================================== */
+    .work__divisions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .work__div-card {
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-xl);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      overflow: hidden;
+    }
+
+    .work__div-label {
+      font-family: var(--f-en);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+    }
+
+    .work__div-name {
+      font-family: var(--f-serif);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-weight: 700;
+      letter-spacing: .03em;
+      margin-bottom: .5rem;
+    }
+
+    .work__div-text {
+      font-size: .9rem;
+      line-height: 1.9;
+      color: var(--c-text-sub);
+    }
+
+    .work__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    .work__tags li {
+      font-size: .75rem;
+      font-weight: 600;
+      padding: .28em .85em;
+      border-radius: 50px;
+      border: 1.5px solid var(--c-border);
+      color: var(--c-text-sub);
+    }
+
+    /* 縦型動画ラッパー（9:16比率） */
+    .video-wrap--vertical {
+      position: relative;
+      width: 100%;
+      max-width: 220px;
+      margin-inline: auto;
+      aspect-ratio: 9 / 16;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: var(--c-bg-dark2);
+      flex-shrink: 0;
+    }
+
+    .video-wrap--vertical iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* 動画プレースホルダー */
+    .video-ph {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(160deg, #1e2740 0%, #2a1f12 100%);
+      color: #fff;
+    }
+
+    .video-ph__btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .video-ph__btn:hover {
+      transform: scale(1.1);
+      background: var(--c-accent-dk);
+    }
+
+    .video-ph__play {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-left: 3px;
+    }
+
+    .video-ph__title {
+      font-size: .8rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .video-ph__note {
+      font-size: .65rem;
+      color: rgba(255,255,255,.45);
+    }
+
+    /* 1日の流れ（横並び） */
+    .work__dayflow {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+      background: var(--c-bg-dark);
+      border-radius: var(--r-xl);
+      padding: clamp(2rem, 4vw, 3.5rem);
+      color: #fff;
+    }
+
+    .work__dayflow-title {
+      font-family: var(--f-serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 700;
+      margin: .4rem 0 .8rem;
+    }
+
+    .work__dayflow-desc {
+      font-size: .92rem;
+      line-height: 1.9;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 1.5rem;
+    }
+
+    .work__dayflow-video { max-width: 180px; }
+
+    @media (max-width: 768px) {
+      .work__divisions { grid-template-columns: 1fr; }
+      .work__div-card { flex-direction: column; }
+      .work__dayflow {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .work__dayflow-video {
+        max-width: 160px;
+        margin-inline: auto;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -840,6 +1007,106 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ===========================================
+       OUR WORK — わたしたちの仕事
+       =========================================== -->
+  <section class="section section--soft work" id="work">
+    <div class="container">
+
+      <div class="sec-head reveal">
+        <span class="sec-label">What We Do</span>
+        <h2 class="sec-h2">わたしたちの仕事</h2>
+        <p class="sec-sub">「工業」という名前の奥にある、空間づくりの専門家たちの仕事。<br />単純に物を運ぶのではなく、空間を考え、提案し、つくる仕事です。</p>
+      </div>
+
+      <!-- 事業部カード -->
+      <div class="work__divisions">
+
+        <!-- スペースクリエーション事業部 -->
+        <div class="work__div-card reveal">
+          <div class="work__div-label">Space Creation</div>
+          <div class="work__div-body">
+            <h3 class="work__div-name">スペースクリエーション事業部</h3>
+            <p class="work__div-text">
+              美術館・ホテル・商業施設など、空間全体の設計・施工・演出を担う事業部。
+              カーテンや内装にとどまらず、空間そのものをデザインするという高い専門性が強みです。
+              難易度の高い案件ほど、チームの底力が問われます。
+            </p>
+            <!-- [REPLACE] キーワードタグを自由に変更 -->
+            <ul class="work__tags">
+              <li>商業施設</li><li>ホテル</li><li>美術館</li>
+              <li>インテリア設計</li><li>内装工事</li><li>改装・改築</li>
+            </ul>
+          </div>
+          <!-- 動画プレースホルダー（縦型9:16） -->
+          <!-- [REPLACE] data-yt-id に YouTube動画IDを入れると自動で埋め込まれます -->
+          <div class="video-wrap video-wrap--vertical" data-yt-id="SPACE_VIDEO_ID">
+            <div class="video-ph">
+              <button class="video-ph__btn" aria-label="動画を再生">
+                <span class="video-ph__play">▶</span>
+              </button>
+              <p class="video-ph__title">スペースクリエーション<br />事業紹介動画</p>
+              <p class="video-ph__note">※動画IDを設定すると再生されます</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- マイスター事業部 -->
+        <div class="work__div-card reveal reveal-d2">
+          <div class="work__div-label">Meister</div>
+          <div class="work__div-body">
+            <h3 class="work__div-name">マイスター事業部</h3>
+            <p class="work__div-text">
+              テント・設備・特殊施工など、職人技が活きる事業部。
+              「マイスター（職人）」の名の通り、高度な技術と専門知識を武器に、
+              他社では対応できない案件に挑みます。単純作業ではなく、考える職人の仕事です。
+            </p>
+            <!-- [REPLACE] キーワードタグを自由に変更 -->
+            <ul class="work__tags">
+              <li>テント施工</li><li>設備工事</li><li>特殊施工</li>
+              <li>現場管理</li><li>職人技術</li><li>専門対応</li>
+            </ul>
+          </div>
+          <!-- [REPLACE] data-yt-id に YouTube動画IDを入れると自動で埋め込まれます -->
+          <div class="video-wrap video-wrap--vertical" data-yt-id="MEISTER_VIDEO_ID">
+            <div class="video-ph">
+              <button class="video-ph__btn" aria-label="動画を再生">
+                <span class="video-ph__play">▶</span>
+              </button>
+              <p class="video-ph__title">マイスター事業部<br />紹介動画</p>
+              <p class="video-ph__note">※動画IDを設定すると再生されます</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 1日の流れ（横並び：テキスト + 縦型動画） -->
+      <div class="work__dayflow reveal">
+        <div class="work__dayflow-text">
+          <span class="sec-label">A Day in the Life</span>
+          <h3 class="work__dayflow-title">1日の流れ</h3>
+          <p class="work__dayflow-desc">
+            朝の段取りから夕方の確認まで、丸髙工業の仕事リズムをのぞいてみましょう。
+            現場によって内容は様々ですが、チームで動き、考え、完成させる流れは共通です。
+          </p>
+          <a href="#jobs" class="btn btn--dark">募集要項を見る →</a>
+        </div>
+        <!-- [REPLACE] data-yt-id に YouTube動画IDを入れると自動で埋め込まれます（縦型9:16推奨） -->
+        <div class="video-wrap video-wrap--vertical work__dayflow-video" data-yt-id="DAYFLOW_VIDEO_ID">
+          <div class="video-ph">
+            <button class="video-ph__btn" aria-label="動画を再生">
+              <span class="video-ph__play">▶</span>
+            </button>
+            <p class="video-ph__title">1日の流れ</p>
+            <p class="video-ph__note">縦型動画（9:16）推奨</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
