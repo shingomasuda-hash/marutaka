@@ -506,6 +506,70 @@
       .hero__ctas .btn { width: 100%; }
     }
 
+    /* =====================================================
+       7. PAIN POINTS
+       ===================================================== */
+    .pain__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .pain__card {
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-lg);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: .9rem;
+      transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .pain__card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .pain__icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .pain__card p {
+      font-size: .92rem;
+      line-height: 1.75;
+      color: var(--c-text);
+      font-weight: 500;
+    }
+
+    .pain__answer {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 2.5rem;
+      background: var(--c-bg-dark);
+      border-radius: var(--r-xl);
+      color: #fff;
+    }
+
+    .pain__answer-text {
+      font-family: var(--f-serif);
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+
+    @media (max-width: 900px) {
+      .pain__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .pain__grid { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -590,6 +654,54 @@
     <div class="hero__scroll" aria-hidden="true">
       <span>SCROLL</span>
       <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===========================================
+       PAIN POINTS
+       =========================================== -->
+  <section class="section section--soft pain" id="pain">
+    <div class="container">
+
+      <div class="sec-head reveal">
+        <span class="sec-label">For Job Seekers</span>
+        <h2 class="sec-h2">こんな悩み、ありませんか？</h2>
+        <p class="sec-sub">仕事探しの「もどかしさ」に、正直に向き合います。</p>
+      </div>
+
+      <div class="pain__grid">
+        <!-- [REPLACE] カード内容は PAIN_ITEMS 定数（後述のJSブロック）で管理 -->
+        <div class="pain__card reveal reveal-d1">
+          <div class="pain__icon">😔</div>
+          <p>ただの流れ作業で、<br />仕事の手応えが感じられない</p>
+        </div>
+        <div class="pain__card reveal reveal-d2">
+          <div class="pain__icon">📦</div>
+          <p>「モノを右から左に流す」だけで、<br />自分が成長している気がしない</p>
+        </div>
+        <div class="pain__card reveal reveal-d3">
+          <div class="pain__icon">🏗️</div>
+          <p>経験を活かしたいのに、<br />裁量を与えてもらえない</p>
+        </div>
+        <div class="pain__card reveal reveal-d1">
+          <div class="pain__icon">🌱</div>
+          <p>未経験でも、<br />技術が身につく環境で働きたい</p>
+        </div>
+        <div class="pain__card reveal reveal-d2">
+          <div class="pain__icon">🎨</div>
+          <p>デザインや提案に関われる仕事で、<br />「つくった」という実感が欲しい</p>
+        </div>
+        <div class="pain__card reveal reveal-d3">
+          <div class="pain__icon">🤝</div>
+          <p>職場環境だけでなく、<br />仕事の中身でも納得して働きたい</p>
+        </div>
+      </div>
+
+      <div class="pain__answer reveal">
+        <p class="pain__answer-text">その悩み、丸髙工業で解決できるかもしれません。</p>
+        <a href="#reasons" class="btn btn--dark">選ばれる理由を見る →</a>
+      </div>
+
     </div>
   </section>
 
