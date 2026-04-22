@@ -127,26 +127,7 @@
     .sec-head--center { text-align: center; }
     .sec-head--center::after { margin-inline: auto; }
 
-    /* -------------------------------------------------------
-       Scroll reveal
-       JS が動けばフェードアップ。動かなくてもコンテンツは常に見える。
-       html.js-ready クラスがある場合のみ opacity:0 を適用。
-    ------------------------------------------------------- */
-    html.js-ready .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .65s var(--ease), transform .65s var(--ease);
-    }
-    html.js-ready .reveal.in {
-      opacity: 1;
-      transform: none;
-    }
-    html.js-ready .reveal-d1 { transition-delay: .1s; }
-    html.js-ready .reveal-d2 { transition-delay: .2s; }
-    html.js-ready .reveal-d3 { transition-delay: .3s; }
-    html.js-ready .reveal-d4 { transition-delay: .4s; }
-
-    /* Hero — CSSキーフレームで確実にフェードイン */
+    /* Hero フェードイン（CSSキーフレームのみ、JS不要） */
     .hero-anim {
       animation: heroFadeUp .8s var(--ease) both;
     }
@@ -159,6 +140,9 @@
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: none; }
     }
+
+    /* reveal クラスは構造上残すが、opacity は一切変えない */
+    .reveal, .reveal.in { opacity: 1; transform: none; }
 
     /* =====================================================
        4. BUTTONS
@@ -2595,29 +2579,8 @@
       el.addEventListener('click', closeMenu);
     });
 
-    // Scroll reveal
-    // 1. まず html に js-ready を付与（これで opacity:0 が有効になる）
-    document.documentElement.classList.add('js-ready');
-
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          revealObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-
-    function watchReveals() {
-      document.querySelectorAll('.reveal:not(.in)').forEach(el => revealObs.observe(el));
-    }
-    watchReveals();
-    window.watchReveals = watchReveals;
-
-    // フォールバック: 2秒後に残った reveal を強制表示
-    setTimeout(() => {
-      document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
-    }, 2000);
+    // reveal クラスはアニメーション廃止のため何もしない
+    window.watchReveals = function() {};
   </script>
 
 </body>
