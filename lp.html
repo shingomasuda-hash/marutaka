@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>採用情報 | 丸髙工業株式会社</title>
   <meta name="description" content="丸髙工業株式会社の採用情報。空間づくり・改装・提案に強い専門集団。新卒・中途（未経験・経験者）募集中。" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -127,19 +130,6 @@
     .sec-head--center { text-align: center; }
     .sec-head--center::after { margin-inline: auto; }
 
-    /* Hero フェードイン（CSSキーフレームのみ、JS不要） */
-    .hero-anim {
-      animation: heroFadeUp .8s var(--ease) both;
-    }
-    .hero-anim-d1 { animation-delay: .15s; }
-    .hero-anim-d2 { animation-delay: .3s;  }
-    .hero-anim-d3 { animation-delay: .45s; }
-    .hero-anim-d4 { animation-delay: .6s;  }
-
-    @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: none; }
-    }
 
 
     /* =====================================================
@@ -1603,20 +1593,20 @@
     <div class="hero__grid"></div>
 
     <div class="hero__inner">
-      <p class="hero__eyebrow hero-anim">Recruitment 2025</p>
+      <p class="hero__eyebrow">Recruitment 2025</p>
 
-      <h1 class="hero__h1 hero-anim hero-anim-d1">
+      <h1 class="hero__h1">
         あなたの経験と主体性が、<br />
         <em>ここで活きる。</em>
       </h1>
 
-      <p class="hero__sub hero-anim hero-anim-d2">
+      <p class="hero__sub">
         美術館・ホテル・商業施設——難易度の高い空間づくりに<br />
         正面から向き合う会社です。<br />
         経験者には広い裁量を。未経験者には確かな成長環境を。
       </p>
 
-      <div class="hero__badges hero-anim hero-anim-d3">
+      <div class="hero__badges">
         <!-- [REPLACE] バッジテキストは自由に変更可 -->
         <span class="hero__badge hero__badge--gold">経験者優遇</span>
         <span class="hero__badge">未経験歓迎</span>
@@ -1624,7 +1614,7 @@
         <span class="hero__badge">空間づくりのプロ集団</span>
       </div>
 
-      <div class="hero__ctas hero-anim hero-anim-d4">
+      <div class="hero__ctas">
         <a href="#entry" class="btn btn--gold btn--lg">エントリーする</a>
         <a href="#entry" class="btn btn--outline-inv btn--lg">まずは話を聞く</a>
       </div>
