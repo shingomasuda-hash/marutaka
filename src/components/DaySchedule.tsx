@@ -1,6 +1,7 @@
 import { daySchedule } from '@/data/content';
 import Reveal from './Reveal';
 import VideoPlayer from './VideoPlayer';
+import { videoSources } from '@/data/videos';
 import VideoKicker from './VideoKicker';
 import DotGrid from './decor/DotGrid';
 
@@ -14,8 +15,7 @@ export default function DaySchedule() {
             <VideoKicker className="mb-3 text-ink lg:mb-4">{daySchedule.videoKicker}</VideoKicker>
             <div>
               <VideoPlayer
-                src="/videos/web/one-day.mp4"
-                poster="/videos/posters/one-day.jpg"
+                source={videoSources.oneDay}
                 label={daySchedule.videoLabel}
                 title={daySchedule.videoLabel}
               />

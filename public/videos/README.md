@@ -1,10 +1,42 @@
-# 動画ファイルの配置
+# 動画の設定
 
-このセッションからは Google Drive の動画（各約200MB）を取得できませんでした。
-組織のegressポリシーで `drive.google.com` が遮断されており、Drive MCP 経由の
-ダウンロードにも 10MB の上限があるためです。
+## 推奨: YouTube で公開する
 
-以下の手順でファイルを配置してください。
+動画4本は合計約850MBあり、Vercelの静的アセットに置くのは容量・帯域の面で
+不利です。YouTube に公開して埋め込むのが最も簡単で、このリポジトリには
+**ファイルを一切置かずに済みます**。
+
+1. 4本を YouTube にアップロード（**限定公開／Unlisted でも埋め込み再生できます**。
+   非公開／Private は埋め込めません）
+2. YouTube Studio の［動画の詳細］→［すべて表示］→ 「埋め込みを許可する」がONか確認
+3. 各動画のIDを `src/data/videos.ts` に記入するだけ
+
+```
+https://www.youtube.com/watch?v=XXXXXXXXXXX  →  'XXXXXXXXXXX'
+https://youtu.be/XXXXXXXXXXX                 →  'XXXXXXXXXXX'
+https://www.youtube.com/shorts/XXXXXXXXXXX   →  'XXXXXXXXXXX'
+```
+
+| `src/data/videos.ts` のキー | 元ファイル | セクション |
+| --- | --- | --- |
+| `companyTour` | 社内ツアー.mp4 | 04 わたしたちの仕事 |
+| `oneDay` | 1日のスケジュール.mp4 | 05 1日の流れ |
+| `ceoMessage` | 代表挨拶.mp4 | 06 わたしたちの想い |
+| `staffInterview` | スタッフインタビュー.mp4 | 08 スタッフの声 |
+
+サムネイルは YouTube から自動取得するため、poster の用意は不要です。
+再生ボタンを押すまで iframe を読み込まないので、ページ表示速度にも
+Cookie にも影響しません（`youtube-nocookie.com` を使用）。
+
+**動画の縦横比について**: デザインの動画枠は縦長（27:50）です。
+縦向きの動画をアップロードすれば枠いっぱいに表示されます。
+横向き（16:9）の動画の場合は上下に黒帯が出るため、その際はご連絡ください。
+
+---
+
+## 代替: 自前でホスティングする
+
+`src/data/videos.ts` の `youtubeId` を空のままにすると、以下のファイルを参照します。
 
 ## 1. 元動画をそのまま置く（削除しないこと）
 
@@ -61,9 +93,8 @@ poster staff-interview.mp4 staff-interview.jpg
 ## 注意
 
 - `original/` と `web/` は `.gitignore` 済みです（リポジトリを肥大化させないため）。
-  Vercelへデプロイする場合は、動画は外部ストレージ（S3 / Cloudflare R2 / Mux 等）に
-  置き、`src/components/*.tsx` の `src` をそのURLに差し替える運用を推奨します。
-  Vercelの静的アセットには容量・帯域の制限があります。
-- 動画は自動再生しません。`preload="metadata"` で、再生ボタンを押すまで
-  `<video>` 要素自体をマウントしません。
+  自前ホスティングの場合は外部ストレージ（S3 / Cloudflare R2 / Mux 等）に置き、
+  `src/data/videos.ts` の `src` をそのURLに差し替える運用を推奨します。
+- 動画は自動再生しません。再生ボタンを押すまで `<video>` / iframe を
+  マウントしないため、ページロード時に動画は一切読み込まれません。
 - 動画枠の縦横比はデザインに合わせて **27:50（縦長）** に固定しています。

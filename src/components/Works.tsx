@@ -2,6 +2,7 @@ import { works } from '@/data/content';
 import Reveal from './Reveal';
 import SectionChip from './SectionChip';
 import VideoPlayer from './VideoPlayer';
+import { videoSources } from '@/data/videos';
 import VideoKicker from './VideoKicker';
 import DotGrid from './decor/DotGrid';
 import { workIcons } from './Icons';
@@ -28,8 +29,7 @@ export default function Works() {
             <VideoKicker className="mb-3 text-ink lg:mb-4">{works.videoKicker}</VideoKicker>
             <div>
               <VideoPlayer
-                src="/videos/web/company-tour.mp4"
-                poster="/videos/posters/company-tour.jpg"
+                source={videoSources.companyTour}
                 label={works.videoLabel}
                 title={works.videoLabel}
               />

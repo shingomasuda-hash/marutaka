@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
+import { getSiteUrl } from '@/lib/siteUrl';
 import './globals.css';
 
 const notoSansJp = Noto_Sans_JP({
@@ -19,16 +20,18 @@ const notoSerifJp = Noto_Serif_JP({
 });
 
 /**
- * Set NEXT_PUBLIC_SITE_URL in Vercel so canonical / OGP URLs resolve absolutely.
+ * Set NEXT_PUBLIC_SITE_URL in Vercel to pin canonical / OGP URLs to the real
+ * domain. If it is missing or blank we fall back to the Vercel-provided host,
+ * so the build never fails on a misconfigured variable.
  */
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com';
+const siteUrl = getSiteUrl();
 
 const title = '空間に、あなたの仕事を。｜丸髙工業 採用サイト RECRUIT 2026';
 const description =
   '有名百貨店・スーパーブランド・商業空間・ホテル——プロとして「考えながら働ける」場所がここにある。丸髙工業の空間クリエイター／マイスター事業部の採用情報です。未経験歓迎・経験者優遇。';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: siteUrl,
   title,
   description,
   alternates: { canonical: '/' },

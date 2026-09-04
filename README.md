@@ -37,9 +37,10 @@ src/
     EntrySection.tsx    11 エントリーCTA
     EntryForm.tsx       11 応募フォーム
     SiteFooter.tsx      12 Footer
-    VideoPlayer.tsx     動画UI（サムネイル・再生アイコン・ラベル・角丸・オーバーレイ）
+    VideoPlayer.tsx     動画UI（YouTube埋め込み / 自前MP4の両対応）
     decor/              装飾（曲線リボン・ドット・スカイライン）をSVGで再現
   data/content.ts       デザインから起こした全テキスト（変更はここだけ）
+  data/videos.ts        動画4本のソース設定（YouTube ID をここに記入）
   lib/submitApplication.ts  フォーム送信アダプタ
 ```
 
@@ -51,7 +52,8 @@ src/
 未配置でもレイアウトは崩れません（グリーン系のフォールバックになります）。
 
 - 画像 → [`public/assets/README.md`](public/assets/README.md)
-- 動画 → [`public/videos/README.md`](public/videos/README.md)
+- 動画 → **[`src/data/videos.ts`](src/data/videos.ts) に YouTube の動画IDを入れるだけです。**
+  詳細と自前ホスティングの手順は [`public/videos/README.md`](public/videos/README.md)
 
 ## フォーム
 
@@ -69,7 +71,7 @@ UI側は `SubmitResult` の形だけを知っているため、他の変更は�
 
 | 変数 | 用途 |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | canonical / OGP の絶対URL生成 |
+| `NEXT_PUBLIC_SITE_URL` | canonical / OGP の絶対URL生成（未設定ならVercelのホスト名を自動使用） |
 | `NEXT_PUBLIC_ENTRY_ENDPOINT` | 応募フォームの送信先（未設定なら送信しない） |
 
 ## デザイン再現について

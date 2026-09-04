@@ -2,6 +2,7 @@ import { philosophy } from '@/data/content';
 import Reveal from './Reveal';
 import SectionChip from './SectionChip';
 import VideoPlayer from './VideoPlayer';
+import { videoSources } from '@/data/videos';
 
 /**
  * 06 わたしたちの想い.
@@ -55,8 +56,7 @@ export default function Philosophy() {
         <Reveal delay={180} className="mt-10 flex justify-center lg:mt-16">
           <div className="w-[54%] min-w-[190px] max-w-[315px]">
             <VideoPlayer
-              src="/videos/web/ceo-message.mp4"
-              poster="/videos/posters/ceo-message.jpg"
+              source={videoSources.ceoMessage}
               label={philosophy.videoLabel}
               labelTone="brown"
               title={philosophy.videoLabel}

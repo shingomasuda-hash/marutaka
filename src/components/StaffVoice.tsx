@@ -2,6 +2,7 @@ import { staffVoice } from '@/data/content';
 import Reveal from './Reveal';
 import SectionChip from './SectionChip';
 import VideoPlayer from './VideoPlayer';
+import { videoSources } from '@/data/videos';
 import VideoKicker from './VideoKicker';
 
 /** 08 スタッフの声 — スタッフインタビュー動画 */
@@ -24,8 +25,7 @@ export default function StaffVoice() {
         <Reveal delay={80} className="mt-4 flex justify-center lg:mt-6">
           <div className="w-[52%] min-w-[180px] max-w-[285px]">
             <VideoPlayer
-              src="/videos/web/staff-interview.mp4"
-              poster="/videos/posters/staff-interview.jpg"
+              source={videoSources.staffInterview}
               label={staffVoice.videoLabel}
               title={staffVoice.videoLabel}
             />
