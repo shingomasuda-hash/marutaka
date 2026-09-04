@@ -33,8 +33,8 @@ export default function Hero() {
       </div>
 
       {/* copy block, anchored to the lower part of the frame as in the comp */}
-      <div className="relative z-10 mx-auto flex min-h-[min(193vw,1150px)] w-full max-w-content flex-col justify-end px-6 pb-8 pt-32 sm:px-8 lg:min-h-[780px] lg:px-10 lg:pb-16">
-        <p className="mb-4 flex items-center gap-2 text-[13px] font-medium tracking-[0.22em] text-white/95 lg:mb-5 lg:text-[15px]">
+      <div className="relative z-10 mx-auto flex min-h-[min(193vw,1150px)] w-full max-w-content flex-col justify-end px-6 pb-8 pt-32 sm:px-8 lg:min-h-[820px] lg:max-w-[1360px] lg:px-10 lg:pb-14">
+        <p className="mb-4 flex items-center gap-2 text-[13px] font-medium tracking-[0.22em] text-white/95 lg:absolute lg:left-10 lg:top-12 lg:mb-0 lg:text-[15px]">
           <span aria-hidden="true">—</span>
           {hero.eyebrow}
           <span aria-hidden="true">—</span>
@@ -60,18 +60,18 @@ export default function Hero() {
         </p>
 
         {/* two-column feature strip exactly as laid out in the comp */}
-        <div className="mt-6 grid grid-cols-[41%_1fr] gap-y-2 whitespace-nowrap text-[clamp(11px,3.1vw,13px)] text-white lg:mt-9 lg:max-w-[660px] lg:grid-cols-[34%_1fr] lg:gap-y-3 lg:text-[16px]">
+        <div className="mt-6 grid grid-cols-[41%_1fr] gap-y-2 whitespace-nowrap text-[clamp(11px,3.1vw,13px)] text-white lg:mt-14 lg:flex lg:items-center lg:gap-7 lg:text-[15px]">
           <p>・{hero.points[0]}</p>
-          <p>
+          <p className="lg:order-3">
             <span className="inline-block rounded-[3px] bg-green-800/90 px-2.5 py-1 font-medium tracking-wide">
               {hero.tag}
             </span>
           </p>
-          <p>・{hero.points[2]}</p>
-          <p>・{hero.points[1]}</p>
+          <p className="lg:order-2">・{hero.points[2]}</p>
+          <p className="lg:order-4">・{hero.points[1]}</p>
         </div>
 
-        <div className="mx-auto mt-7 grid w-full max-w-[478px] grid-cols-2 gap-[7%] lg:mx-0 lg:mt-10 lg:max-w-[560px] lg:gap-6">
+        <div className="mx-auto mt-7 grid w-full max-w-[478px] grid-cols-2 gap-[7%] lg:mx-0 lg:mt-7 lg:max-w-[452px] lg:gap-5">
           <a
             href="#entry"
             className="flex items-center justify-center rounded-xl bg-green-800 whitespace-nowrap px-3 py-4 font-serif text-[clamp(15px,4.3vw,19px)] font-semibold text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 hover:bg-green-700 lg:py-5 lg:text-2xl"

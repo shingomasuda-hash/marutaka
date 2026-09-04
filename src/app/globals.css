@@ -44,12 +44,11 @@
   .hero-scrim {
     background-image: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.04) 0%,
-      rgba(0, 0, 0, 0.12) 26%,
-      rgba(0, 0, 0, 0.3) 46%,
-      rgba(0, 0, 0, 0.5) 66%,
-      rgba(0, 0, 0, 0.6) 86%,
-      rgba(0, 0, 0, 0.68) 100%
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.04) 42%,
+      rgba(0, 0, 0, 0.16) 66%,
+      rgba(0, 0, 0, 0.3) 88%,
+      rgba(0, 0, 0, 0.38) 100%
     );
   }
 
@@ -57,8 +56,7 @@
     .hero-photo {
       background-image: url('/assets/images/hero-pc.jpg'), url('/assets/images/hero.jpg'),
         linear-gradient(180deg, #5aa6dc 0%, #8fc4c0 38%, #2f5f52 68%, #14342a 100%);
-      /* 横長トリミングになるPCでは、コピーが乗る下側に軒下が来るよう寄せる */
-      background-position: center 72%;
+      background-position: center center;
     }
   }
 

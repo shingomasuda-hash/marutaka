@@ -1,16 +1,22 @@
 # 画像素材の配置
 
-## ⚠️ 現在配置されているのは「暫定素材」です
+## 配置済み
 
-`hero.jpg` / `reasons-bg.jpg` / `philosophy-bg.jpg` は、支給デザイン
-`SP_LP` の中で**文字が焼き込まれていない帯（y=190〜615）だけを切り出したもの**です。
-デザイナーの実際の写真ではありますが、
+FVと背景の建築写真は、デザイナーから支給された**写真レイヤーそのもの**を
+配置済みです（Figma書き出しの `Rectangle.png` / `Clip path group.png`）。
+文字が焼き込まれていない素材なので、デザイン通りのトリミングで表示されます。
 
-- 横幅が **590px しかない**（PCでは2.4倍に引き伸ばされて粗くなります）
-- 空の部分や軒下の部分が含まれていない（トリミングがデザインと異なります）
+| ファイル | 元 | 解像度 |
+| --- | --- | --- |
+| `hero.jpg` | Clip path group.png（SP用トリミング） | 393×763 |
+| `hero-pc.jpg` | Rectangle.png（PC用トリミング） | 1280×784 |
+| `reasons-bg.jpg` | Rectangle.png の上部を切り出し | 1280×560 |
+| `philosophy-bg.jpg` | Rectangle.png の下部を切り出し | 1280×604 |
 
-ため、**元の建築写真が入手でき次第、必ず差し替えてください。**
-同じファイル名で上書きするだけで反映されます。
+`hero.jpg` は 1024px 未満、`hero-pc.jpg` は 1024px 以上で使われます。
+
+高解像度ディスプレイでさらに精細にしたい場合のみ、より大きな書き出しを
+同じファイル名で上書きしてください（2倍程度あれば十分です）。
 
 ## 差し替え / 配置するファイル
 
@@ -18,11 +24,11 @@
 （レイアウトは崩れません）。
 
 ```
-public/assets/images/hero.jpg            FV背景写真（SP基準・縦長トリミング）★暫定素材が入っています
-public/assets/images/hero-pc.jpg         FV背景写真（PC基準・横長トリミング / 任意）
-                                         ※置くとPC(1024px〜)でのみ hero.jpg より優先されます
-public/assets/images/reasons-bg.jpg      03 選ばれる理由 の背景写真（グリーンのオーバーレイが乗ります）★暫定素材
-public/assets/images/philosophy-bg.jpg   06 わたしたちの想い の背景写真（同上）★暫定素材
+public/assets/images/hero.jpg            FV背景写真（SP基準・縦長トリミング）配置済み
+public/assets/images/hero-pc.jpg         FV背景写真（PC基準・横長トリミング）配置済み
+                                         ※PC(1024px〜)でのみ hero.jpg より優先されます
+public/assets/images/reasons-bg.jpg      03 選ばれる理由 の背景写真（グリーンのオーバーレイが乗ります）配置済み
+public/assets/images/philosophy-bg.jpg   06 わたしたちの想い の背景写真（同上）配置済み
 public/assets/images/ogp.jpg             OGP画像 1200x630
 public/favicon.ico                       ファビコン（app/icon.png でも可）
 ```
@@ -36,5 +42,4 @@ public/favicon.ico                       ファビコン（app/icon.png でも�
   白文字を読ませるためのスクリム（`.hero-scrim` in `src/app/globals.css`）は
   実装済みで、デザインの輝度を実測して合わせてあります。
   差し替え後に濃さが合わなければ、そこだけ調整してください。
-- PCでの写真の見え方は `.hero-photo` の `background-position`（現在 `center 72%`）で
-  調整できます。暫定素材のトリミングに合わせた値なので、差し替え時に見直してください。
+- PCでの写真の見え方は `.hero-photo` の `background-position` で調整できます。
