@@ -16,15 +16,9 @@ export default function Hero() {
       className="relative isolate min-h-[min(193vw,1150px)] w-full overflow-hidden bg-green-900 lg:min-h-[780px]"
     >
       {/* photograph */}
-      <div
-        className="absolute inset-0 -z-10 bg-cover bg-[center_30%] bg-no-repeat lg:bg-[url('/assets/images/hero-pc.jpg'),url('/assets/images/hero.jpg')]"
-        style={{
-          backgroundImage:
-            "url('/assets/images/hero.jpg'), linear-gradient(180deg,#5aa6dc 0%,#8fc4c0 38%,#2f5f52 68%,#14342a 100%)",
-        }}
-      />
+      <div className="hero-photo absolute inset-0 -z-10" />
       {/* the comp darkens the lower half so the copy holds */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/5 via-black/10 to-black/55" />
+      <div className="hero-scrim absolute inset-0 -z-10" />
 
       {/* 30+ 年の実績 */}
       <div className="absolute right-[7.6%] top-[6%] z-10 lg:right-10 lg:top-10">

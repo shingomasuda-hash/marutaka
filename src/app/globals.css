@@ -24,6 +24,44 @@
 }
 
 @layer components {
+  /*
+   * FV の建築写真。レイヤーを重ねているので、hero-pc.jpg が未配置(404)でも
+   * その層がスキップされ hero.jpg にフォールバックし、両方無ければ
+   * グラデーションが出る。
+   */
+  .hero-photo {
+    background-image: url('/assets/images/hero.jpg'),
+      linear-gradient(180deg, #5aa6dc 0%, #8fc4c0 38%, #2f5f52 68%, #14342a 100%);
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+  }
+
+  /*
+   * FV のスクリム。デザインでは軒下にあたる下半分が暗く、白文字が乗る。
+   * 実測（SP_LP のコピー位置の輝度 51〜84）に合わせて落としている。
+   */
+  .hero-scrim {
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.04) 0%,
+      rgba(0, 0, 0, 0.12) 26%,
+      rgba(0, 0, 0, 0.3) 46%,
+      rgba(0, 0, 0, 0.5) 66%,
+      rgba(0, 0, 0, 0.6) 86%,
+      rgba(0, 0, 0, 0.68) 100%
+    );
+  }
+
+  @media (min-width: 1024px) {
+    .hero-photo {
+      background-image: url('/assets/images/hero-pc.jpg'), url('/assets/images/hero.jpg'),
+        linear-gradient(180deg, #5aa6dc 0%, #8fc4c0 38%, #2f5f52 68%, #14342a 100%);
+      /* 横長トリミングになるPCでは、コピーが乗る下側に軒下が来るよう寄せる */
+      background-position: center 72%;
+    }
+  }
+
   /* Section eyebrow chip: rounded outline pill used above most headings. */
   .chip-outline {
     @apply inline-flex items-center justify-center rounded-full border px-5 py-1.5 text-[11px] font-bold tracking-[0.08em] sm:px-6 sm:py-2 sm:text-xs;
