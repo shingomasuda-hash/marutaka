@@ -37,10 +37,11 @@ src/
     EntrySection.tsx    11 エントリーCTA
     EntryForm.tsx       11 応募フォーム
     SiteFooter.tsx      12 Footer
-    VideoPlayer.tsx     動画UI（YouTube埋め込み / 自前MP4の両対応）
+    VideoPlayer.tsx     動画UI（YouTube / Googleドライブ / MP4 に対応）
     decor/              装飾（曲線リボン・ドット・スカイライン）をSVGで再現
   data/content.ts       デザインから起こした全テキスト（変更はここだけ）
-  data/videos.ts        動画4本のソース設定（YouTube ID をここに記入）
+  data/videos.ts        動画4本のソース設定（URLをここに記入）
+  lib/videoSource.ts    URLの種類判定（YouTube / ドライブ / ファイル）
   lib/submitApplication.ts  フォーム送信アダプタ
 ```
 
@@ -52,8 +53,10 @@ src/
 未配置でもレイアウトは崩れません（グリーン系のフォールバックになります）。
 
 - 画像 → [`public/assets/README.md`](public/assets/README.md)
-- 動画 → **[`src/data/videos.ts`](src/data/videos.ts) に YouTube の動画IDを入れるだけです。**
-  詳細と自前ホスティングの手順は [`public/videos/README.md`](public/videos/README.md)
+- 動画 → **[`src/data/videos.ts`](src/data/videos.ts) にURLを貼るだけです。**
+  YouTube / Googleドライブ / 動画ファイル のどれでも、URLの種類で埋め込み方法が
+  自動的に切り替わります。現在はDriveの元動画URLを設定済み（要「リンクを知っている全員」）。
+  詳細は [`public/videos/README.md`](public/videos/README.md)
 
 ## フォーム
 

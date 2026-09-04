@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { VideoSource } from '@/data/videos';
+import { resolveVideo } from '@/lib/videoSource';
 
 export type VideoPlayerProps = {
   source: VideoSource;
@@ -18,9 +19,10 @@ export type VideoPlayerProps = {
  * Video frame as drawn in the comp: rounded grey plate, thumbnail, a soft
  * overlay, a centred play button and the label chip pinned bottom-left.
  *
- * Nothing is fetched until the visitor presses play — neither the YouTube
- * iframe (and its cookies/scripts) nor a self-hosted file. Nothing autoplays
- * on page load; the autoplay parameter below only applies after the click.
+ * URLの種類（YouTube / Googleドライブ / 動画ファイル）で埋め込み方法が
+ * 自動的に切り替わる。再生を押すまで iframe も <video> もマウントしないので、
+ * ページロード時に動画・Cookie・外部スクリプトは一切読み込まれない。
+ * 自動再生もしない（autoplay はクリック後のみ）。
  */
 export default function VideoPlayer({
   source,
@@ -32,30 +34,30 @@ export default function VideoPlayer({
   const [active, setActive] = useState(false);
   const [failed, setFailed] = useState(false);
 
-  const youtubeId = source.youtubeId?.trim() || undefined;
+  const resolved = resolveVideo(source.url, source.src);
   const [thumb, setThumb] = useState<string | undefined>(
-    source.poster ?? (youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg` : undefined),
+    source.poster ?? (resolved?.kind === 'youtube' ? resolved.thumbnail : undefined),
   );
 
-  const configured = Boolean(youtubeId || source.src);
   const chip = labelTone === 'brown' ? 'bg-brown-600 text-white' : 'bg-green-800 text-white';
+  const isEmbed = resolved?.kind === 'youtube' || resolved?.kind === 'drive';
 
   return (
     <div
       className={`relative aspect-[27/50] w-full overflow-hidden rounded-2xl bg-frame shadow-[0_10px_30px_rgba(0,0,0,0.10)] ${className}`}
     >
-      {active && youtubeId ? (
+      {active && isEmbed ? (
         <iframe
           className="absolute inset-0 h-full w-full bg-black"
-          src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&playsinline=1&rel=0&modestbranding=1`}
+          src={resolved.embedUrl}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         />
-      ) : active && source.src && !failed ? (
+      ) : active && resolved?.kind === 'file' && !failed ? (
         <video
           className="absolute inset-0 h-full w-full bg-black object-cover"
-          src={source.src}
+          src={resolved.src}
           poster={source.poster}
           controls
           autoPlay
@@ -74,7 +76,7 @@ export default function VideoPlayer({
             setFailed(false);
             setActive(true);
           }}
-          disabled={!configured}
+          disabled={!resolved}
           aria-label={`${title}を再生する`}
           className="group absolute inset-0 h-full w-full cursor-pointer disabled:cursor-default"
         >
@@ -91,8 +93,8 @@ export default function VideoPlayer({
               className="absolute inset-0 h-full w-full object-cover"
               onError={() =>
                 setThumb((current) =>
-                  youtubeId && current?.includes('maxresdefault')
-                    ? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`
+                  resolved?.kind === 'youtube' && current?.includes('maxresdefault')
+                    ? `https://i.ytimg.com/vi/${resolved.id}/hqdefault.jpg`
                     : undefined,
                 )
               }
@@ -101,7 +103,7 @@ export default function VideoPlayer({
 
           <span className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/25 transition-opacity duration-300 group-hover:opacity-80" />
 
-          {configured ? (
+          {resolved ? (
             <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-lg transition-transform duration-300 group-hover:scale-110 group-focus-visible:scale-110 sm:h-[72px] sm:w-[72px]">
               <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7 text-green-800" aria-hidden="true">
                 <path d="M8 5.4v13.2L19 12z" fill="currentColor" />
@@ -119,10 +121,9 @@ export default function VideoPlayer({
 
       {failed ? (
         <p className="absolute inset-x-0 bottom-0 bg-black/70 p-3 text-center text-xs leading-relaxed text-white">
-          動画ファイルが見つかりません。
+          動画を読み込めませんでした。
           <br />
-          <code className="break-all">{source.src}</code> を配置するか、
-          <code>src/data/videos.ts</code> に YouTube ID を設定してください。
+          <code>src/data/videos.ts</code> のURLをご確認ください。
         </p>
       ) : null}
     </div>

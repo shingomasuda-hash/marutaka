@@ -1,5 +1,20 @@
 # 動画の設定
 
+## 現在の設定: Googleドライブの動画を直接埋め込み
+
+`src/data/videos.ts` に、Driveにある元動画の共有URLを設定済みです。
+**アップロード不要で今すぐ再生できます**が、そのためには
+Drive側の共有設定が **「リンクを知っている全員」** である必要があります。
+
+ただし本番運用には次の弱点があるため、**最終的にはYouTubeへの切り替えを推奨します**
+（白木建設案件も同じ経緯でYouTubeへ移行しています）。
+
+- アクセスが増えると再生回数の上限（クォータ）で再生できなくなることがある
+- ドライブ独自のプレーヤーUIが表示される
+- 回線に応じた画質の自動切り替え（アダプティブ配信）がされず、読み込みが重い
+
+---
+
 ## 推奨: YouTube で公開する
 
 動画4本は合計約850MBあり、Vercelの静的アセットに置くのは容量・帯域の面で
@@ -9,13 +24,29 @@
 1. 4本を YouTube にアップロード（**限定公開／Unlisted でも埋め込み再生できます**。
    非公開／Private は埋め込めません）
 2. YouTube Studio の［動画の詳細］→［すべて表示］→ 「埋め込みを許可する」がONか確認
-3. 各動画のIDを `src/data/videos.ts` に記入するだけ
+3. 「共有」で取得したURLを `src/data/videos.ts` の `url` に**そのまま貼るだけ**
+   （IDを抜き出す必要はありません）
 
 ```
-https://www.youtube.com/watch?v=XXXXXXXXXXX  →  'XXXXXXXXXXX'
-https://youtu.be/XXXXXXXXXXX                 →  'XXXXXXXXXXX'
-https://www.youtube.com/shorts/XXXXXXXXXXX   →  'XXXXXXXXXXX'
+https://www.youtube.com/watch?v=XXXXXXXXXXX
+https://youtu.be/XXXXXXXXXXX
+https://youtube.com/shorts/XXXXXXXXXXX
 ```
+
+コードを触らずに差し替える場合は、Vercelの環境変数でも指定できます
+（設定されていればコード側の値より優先されます）。
+
+```
+NEXT_PUBLIC_VIDEO_COMPANY_TOUR=https://youtube.com/shorts/XXXXXXXXXXX
+NEXT_PUBLIC_VIDEO_ONE_DAY=...
+NEXT_PUBLIC_VIDEO_CEO_MESSAGE=...
+NEXT_PUBLIC_VIDEO_STAFF_INTERVIEW=...
+```
+
+> **アップロード時の注意**
+> - 公開設定は「限定公開」。**「非公開」は埋め込みでは再生できません**
+> - 「視聴者：子ども向けです」を選ぶと**埋め込みが禁止されます**。
+>   「子ども向けではありません」を選んでください
 
 | `src/data/videos.ts` のキー | 元ファイル | セクション |
 | --- | --- | --- |
