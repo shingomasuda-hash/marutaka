@@ -42,28 +42,28 @@ export const videoSources = {
   companyTour: {
     url:
       process.env.NEXT_PUBLIC_VIDEO_COMPANY_TOUR ??
-      'https://drive.google.com/file/d/13Z4kjxTvIMdFjI_zEXuugxc_T1yjo68N/view',
+      'https://youtube.com/shorts/zs65qU4Lfi4',
     src: '/videos/web/company-tour.mp4',
   },
   /** 05 1日の流れ ← 1日のスケジュール.mp4 */
   oneDay: {
     url:
       process.env.NEXT_PUBLIC_VIDEO_ONE_DAY ??
-      'https://drive.google.com/file/d/1Ua3Bv5AD-ZJSeCpzEzGvP5G-YgEmL2tS/view',
+      'https://youtube.com/shorts/2HHO-DdtScM',
     src: '/videos/web/one-day.mp4',
   },
   /** 06 わたしたちの想い ← 代表挨拶.mp4 */
   ceoMessage: {
     url:
       process.env.NEXT_PUBLIC_VIDEO_CEO_MESSAGE ??
-      'https://drive.google.com/file/d/1-Q0YWCTWWDR5brghQjIwH1Hy2PharAyi/view',
+      'https://youtube.com/shorts/y59-luPqGIE',
     src: '/videos/web/ceo-message.mp4',
   },
   /** 08 スタッフの声 ← スタッフインタビュー.mp4 */
   staffInterview: {
     url:
       process.env.NEXT_PUBLIC_VIDEO_STAFF_INTERVIEW ??
-      'https://drive.google.com/file/d/1_Ui6XhqWM4K5OTMuaEPbKcf0H2Y-KBiX/view',
+      'https://youtube.com/shorts/-gQHJ7nbWLU',
     src: '/videos/web/staff-interview.mp4',
   },
 } satisfies Record<string, VideoSource>;
