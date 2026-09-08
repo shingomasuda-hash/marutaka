@@ -42,28 +42,28 @@ export const videoSources = {
   companyTour: {
     url:
       process.env.NEXT_PUBLIC_VIDEO_COMPANY_TOUR ??
-      'https://youtube.com/shorts/zs65qU4Lfi4',
+      'https://youtube.com/shorts/NJzs513y3CA',
     src: '/videos/web/company-tour.mp4',
   },
   /** 05 1日の流れ ← 1日のスケジュール.mp4 */
   oneDay: {
     url:
       process.env.NEXT_PUBLIC_VIDEO_ONE_DAY ??
-      'https://youtube.com/shorts/2HHO-DdtScM',
+      'https://youtube.com/shorts/hZNpuIZch0w',
     src: '/videos/web/one-day.mp4',
   },
   /** 06 わたしたちの想い ← 代表挨拶.mp4 */
   ceoMessage: {
     url:
       process.env.NEXT_PUBLIC_VIDEO_CEO_MESSAGE ??
-      'https://youtube.com/shorts/y59-luPqGIE',
+      'https://youtube.com/shorts/EgmHQ7Mz8eQ',
     src: '/videos/web/ceo-message.mp4',
   },
   /** 08 スタッフの声 ← スタッフインタビュー.mp4 */
   staffInterview: {
     url:
       process.env.NEXT_PUBLIC_VIDEO_STAFF_INTERVIEW ??
-      'https://youtube.com/shorts/-gQHJ7nbWLU',
+      'https://youtube.com/shorts/Vlpj_j015Vg',
     src: '/videos/web/staff-interview.mp4',
   },
 } satisfies Record<string, VideoSource>;

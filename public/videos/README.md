@@ -6,10 +6,10 @@
 
 | セクション | 動画 | URL |
 | --- | --- | --- |
-| 04 わたしたちの仕事 | 社内ツアー | https://youtube.com/shorts/zs65qU4Lfi4 |
-| 05 1日の流れ | 1日のスケジュール | https://youtube.com/shorts/2HHO-DdtScM |
-| 06 わたしたちの想い | 代表挨拶 | https://youtube.com/shorts/y59-luPqGIE |
-| 08 スタッフの声 | スタッフインタビュー | https://youtube.com/shorts/-gQHJ7nbWLU |
+| 04 わたしたちの仕事 | 社内ツアー | https://youtube.com/shorts/NJzs513y3CA |
+| 05 1日の流れ | 1日のスケジュール | https://youtube.com/shorts/hZNpuIZch0w |
+| 06 わたしたちの想い | 代表挨拶 | https://youtube.com/shorts/EgmHQ7Mz8eQ |
+| 08 スタッフの声 | スタッフインタビュー | https://youtube.com/shorts/Vlpj_j015Vg |
 
 差し替えは `src/data/videos.ts` の `url` を書き換えるか、
 対応する環境変数を設定してください（**環境変数が優先されます**）。
