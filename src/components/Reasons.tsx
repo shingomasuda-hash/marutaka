@@ -43,8 +43,8 @@ export default function Reasons() {
               key={item.no}
               delay={i * 60}
               className={`border-t border-white/20 py-7 first:border-t-0 lg:py-9 ${
-                i === reasons.items.length - 1 ? 'lg:col-span-2 lg:max-w-[calc(50%-1.75rem)]' : ''
-              } ${i < 2 ? 'lg:border-t-0' : ''}`}
+                i < 2 ? 'lg:border-t-0' : ''
+              }`}
             >
               <div className="flex gap-4 lg:gap-7">
                 <span className="font-serif text-[38px] leading-none text-white/45 lg:text-[54px]">
