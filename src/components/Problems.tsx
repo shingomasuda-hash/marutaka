@@ -1,6 +1,5 @@
 import { problems } from '@/data/content';
 import Reveal from './Reveal';
-import SectionChip from './SectionChip';
 import { problemIcons, BulbIcon } from './Icons';
 import Swoosh from './decor/Swoosh';
 import CurveRibbons from './decor/CurveRibbons';
@@ -34,14 +33,14 @@ export default function Problems() {
 
       <div className="relative mx-auto max-w-content px-6 sm:px-8 lg:px-10">
         <Reveal className="flex flex-col items-center text-center">
-          <SectionChip tone="green">{problems.chip}</SectionChip>
-          <h2 className="mt-5 text-[clamp(24px,5.9vw,35px)] font-bold leading-[1.45] text-green-700 lg:mt-7 lg:text-[42px]">
+          <h2 className="mt-0 text-[clamp(24px,5.9vw,35px)] font-bold leading-[1.45] text-green-700 lg:mt-7 lg:text-[42px]">
             {problems.headingLines.map((line) => (
               <span key={line} className="block">
                 {line}
               </span>
             ))}
           </h2>
+          <p className="mt-4 text-[11px] text-black/45 lg:mt-5 lg:text-xs">{problems.brandNote}</p>
         </Reveal>
 
         <ul className="mt-12 grid grid-cols-2 gap-x-4 gap-y-9 lg:mt-16 lg:grid-cols-3 lg:gap-7">

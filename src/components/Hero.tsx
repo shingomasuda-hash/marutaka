@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       id="fv"
-      aria-label="丸髙工業 採用 2026"
+      aria-label="MARUTAKA 採用 2026"
       className="relative isolate min-h-[min(193vw,1150px)] w-full overflow-hidden bg-green-900 lg:min-h-[780px]"
     >
       {/* photograph */}
@@ -44,7 +44,7 @@ export default function Hero() {
           {hero.titleLines.map((line) => (
             <span
               key={line}
-              className="block whitespace-nowrap text-[clamp(30px,10.2vw,65px)] font-medium leading-[1.19] lg:text-[72px]"
+              className="block whitespace-nowrap text-[clamp(17px,5.5vw,40px)] font-medium leading-[1.34] lg:text-[52px]"
             >
               {line}
             </span>
@@ -59,16 +59,16 @@ export default function Hero() {
           ))}
         </p>
 
-        {/* two-column feature strip exactly as laid out in the comp */}
-        <div className="mt-6 grid grid-cols-[41%_1fr] gap-y-2 whitespace-nowrap text-[clamp(11px,3.1vw,13px)] text-white lg:mt-14 lg:flex lg:items-center lg:gap-7 lg:text-[15px]">
-          <p>・{hero.points[0]}</p>
-          <p className="lg:order-3">
+        {/* feature strip: 2 items + the tag, as revised */}
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2.5 whitespace-nowrap text-[clamp(11px,3.1vw,13px)] text-white lg:mt-14 lg:gap-x-7 lg:text-[15px]">
+          {hero.points.map((point) => (
+            <p key={point}>・{point}</p>
+          ))}
+          <p>
             <span className="inline-block rounded-[3px] bg-green-800/90 px-2.5 py-1 font-medium tracking-wide">
               {hero.tag}
             </span>
           </p>
-          <p className="lg:order-2">・{hero.points[2]}</p>
-          <p className="lg:order-4">・{hero.points[1]}</p>
         </div>
 
         <div className="mx-auto mt-7 grid w-full max-w-[478px] grid-cols-2 gap-[7%] lg:mx-0 lg:mt-7 lg:max-w-[452px] lg:gap-5">

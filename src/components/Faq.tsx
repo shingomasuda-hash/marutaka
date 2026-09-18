@@ -69,13 +69,6 @@ export default function Faq() {
       <div className="mx-auto max-w-narrow px-6 sm:px-8 lg:px-10">
         <Reveal className="flex flex-col items-center text-center">
           <SectionChip tone="brown">{faq.chip}</SectionChip>
-          <h2 className="mt-5 text-[clamp(26px,6.4vw,38px)] font-bold leading-[1.45] text-green-700 [text-shadow:1px_2px_0_rgba(0,0,0,0.12)] lg:mt-7 lg:text-[42px]">
-            {faq.headingLines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
-          </h2>
         </Reveal>
 
         <ul className="mt-9 space-y-3 lg:mt-14 lg:space-y-4">
