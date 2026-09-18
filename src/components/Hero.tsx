@@ -13,12 +13,12 @@ export default function Hero() {
     <section
       id="fv"
       aria-label="MARUTAKA 採用 2026"
-      className="relative isolate min-h-[min(193vw,1150px)] w-full overflow-hidden bg-green-900 lg:min-h-[780px]"
+      className="relative isolate min-h-[min(193vw,1150px)] w-full overflow-hidden bg-white lg:min-h-[780px]"
     >
       {/* photograph */}
-      <div className="hero-photo absolute inset-0 -z-10" />
+      <div className="hero-art absolute inset-0 -z-10" />
       {/* the comp darkens the lower half so the copy holds */}
-      <div className="hero-scrim absolute inset-0 -z-10" />
+      <div className="hero-veil absolute inset-0 -z-10" />
 
       {/* 30+ 年の実績 */}
       <div className="absolute right-[7.6%] top-[6%] z-10 lg:right-10 lg:top-10">
@@ -34,13 +34,13 @@ export default function Hero() {
 
       {/* copy block, anchored to the lower part of the frame as in the comp */}
       <div className="relative z-10 mx-auto flex min-h-[min(193vw,1150px)] w-full max-w-content flex-col justify-end px-6 pb-8 pt-32 sm:px-8 lg:min-h-[820px] lg:max-w-[1360px] lg:px-10 lg:pb-14">
-        <p className="mb-4 flex items-center gap-2 text-[13px] font-medium tracking-[0.22em] text-white/95 lg:absolute lg:left-10 lg:top-12 lg:mb-0 lg:text-[15px]">
+        <p className="mb-4 flex items-center gap-2 text-[13px] font-medium tracking-[0.22em] text-brown-700 lg:absolute lg:left-10 lg:top-12 lg:mb-0 lg:text-[15px]">
           <span aria-hidden="true">—</span>
           {hero.eyebrow}
           <span aria-hidden="true">—</span>
         </p>
 
-        <h1 className="font-serif text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.35)]">
+        <h1 className="font-serif text-green-700">
           {hero.titleLines.map((line) => (
             <span
               key={line}
@@ -51,7 +51,7 @@ export default function Hero() {
           ))}
         </h1>
 
-        <p className="mt-4 text-[clamp(12px,3.35vw,15px)] leading-[1.55] text-white/95 lg:mt-6 lg:text-[17px]">
+        <p className="mt-4 text-[clamp(12px,3.35vw,15px)] leading-[1.55] text-ink/80 lg:mt-6 lg:text-[17px]">
           {hero.leadLines.map((line) => (
             <span key={line} className="block">
               {line}
@@ -60,7 +60,7 @@ export default function Hero() {
         </p>
 
         {/* feature strip: 2 items + the tag, as revised */}
-        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2.5 whitespace-nowrap text-[clamp(11px,3.1vw,13px)] text-white lg:mt-14 lg:gap-x-7 lg:text-[15px]">
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2.5 whitespace-nowrap text-[clamp(11px,3.1vw,13px)] text-ink/85 lg:mt-14 lg:gap-x-7 lg:text-[15px]">
           {hero.points.map((point) => (
             <p key={point}>・{point}</p>
           ))}
@@ -80,7 +80,7 @@ export default function Hero() {
           </a>
           <a
             href="#jobs"
-            className="flex items-center justify-center rounded-xl bg-white whitespace-nowrap px-3 py-4 font-serif text-[clamp(15px,4.3vw,19px)] font-semibold text-green-800 shadow-lg transition-transform duration-200 hover:-translate-y-0.5 hover:bg-green-50 lg:py-5 lg:text-2xl"
+            className="flex items-center justify-center whitespace-nowrap rounded-xl border-2 border-green-800 bg-white px-3 py-4 font-serif text-[clamp(15px,4.3vw,19px)] font-semibold text-green-800 shadow-lg transition-transform duration-200 hover:-translate-y-0.5 hover:bg-green-50 lg:py-5 lg:text-2xl"
           >
             {hero.secondaryCta}
           </a>
@@ -89,8 +89,8 @@ export default function Hero() {
 
       {/* SCROLL cue — desktop only, where the comp has room for it */}
       <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 lg:flex">
-        <span className="text-[10px] font-medium tracking-[0.3em] text-white/85">{hero.scroll}</span>
-        <span className="block h-14 w-px animate-scrollLine bg-white/80" />
+        <span className="text-[10px] font-medium tracking-[0.3em] text-ink/60">{hero.scroll}</span>
+        <span className="block h-14 w-px animate-scrollLine bg-ink/50" />
       </div>
     </section>
   );

@@ -25,38 +25,47 @@
 
 @layer components {
   /*
-   * FV の建築写真。レイヤーを重ねているので、hero-pc.jpg が未配置(404)でも
-   * その層がスキップされ hero.jpg にフォールバックし、両方無ければ
-   * グラデーションが出る。
+   * FV の背景イラスト（手描き風の線画 / SVG）。
+   * 写真に戻す場合は url() を hero.jpg / hero-pc.jpg に差し替えるだけでよい。
    */
-  .hero-photo {
-    background-image: url('/assets/images/hero.jpg'),
-      linear-gradient(180deg, #5aa6dc 0%, #8fc4c0 38%, #2f5f52 68%, #14342a 100%);
+  .hero-art {
+    background-image: url('/assets/images/hero-illustration-sp.svg');
     background-size: cover;
-    background-position: center 30%;
+    background-position: center bottom;
     background-repeat: no-repeat;
-  }
-
-  /*
-   * FV のスクリム。デザインでは軒下にあたる下半分が暗く、白文字が乗る。
-   * 実測（SP_LP のコピー位置の輝度 51〜84）に合わせて落としている。
-   */
-  .hero-scrim {
-    background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.04) 42%,
-      rgba(0, 0, 0, 0.16) 66%,
-      rgba(0, 0, 0, 0.3) 88%,
-      rgba(0, 0, 0, 0.38) 100%
-    );
+    background-color: #ffffff;
   }
 
   @media (min-width: 1024px) {
-    .hero-photo {
-      background-image: url('/assets/images/hero-pc.jpg'), url('/assets/images/hero.jpg'),
-        linear-gradient(180deg, #5aa6dc 0%, #8fc4c0 38%, #2f5f52 68%, #14342a 100%);
-      background-position: center center;
+    .hero-art {
+      background-image: url('/assets/images/hero-illustration.svg');
+      background-position: center bottom;
+    }
+  }
+
+  /*
+   * 白地のイラストに文字が乗るため、暗くするのではなく
+   * 左（テキスト側）に白のベールをかけて可読性を確保する。
+   */
+  .hero-veil {
+    background-image: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0.86) 0%,
+      rgba(255, 255, 255, 0.74) 36%,
+      rgba(255, 255, 255, 0.34) 62%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+  }
+
+  @media (max-width: 1023px) {
+    .hero-veil {
+      background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.5) 38%,
+        rgba(255, 255, 255, 0.88) 60%,
+        rgba(255, 255, 255, 0.93) 100%
+      );
     }
   }
 

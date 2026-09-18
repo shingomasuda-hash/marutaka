@@ -1,5 +1,25 @@
 # 画像素材の配置
 
+## FVの背景について（現在はイラスト）
+
+FVの背景は、修正指示書の「バックを差し替えて欲しい」に合わせて
+**手描き風の線画イラスト（SVG）** に切り替えています。
+
+```
+public/assets/images/hero-illustration.svg      PC用（1600x900）
+public/assets/images/hero-illustration-sp.svg   SP用（820x1240）
+```
+
+- ベクターなのでどの解像度でも滲まず、2ファイル合わせて約33KBです。
+- 白地のイラストなので、FVの文字色を白から緑／濃灰へ変更し、
+  暗くするスクリム（`.hero-scrim`）を白のベール（`.hero-veil`）に置き換えています。
+- 線の色は `src/.../art` の生成スクリプトではなくSVG内の `.s { stroke }` で指定。
+  濃さを変えたい場合はSVGの `stroke` 値を置換してください。
+
+**写真に戻す場合**は `src/app/globals.css` の `.hero-art` の `url()` を
+`hero.jpg` / `hero-pc.jpg` に戻し、`.hero-veil` を `.hero-scrim` に戻してください
+（写真ファイルは下記のとおり残してあります）。
+
 ## 配置済み
 
 FVと背景の建築写真は、デザイナーから支給された**写真レイヤーそのもの**を
