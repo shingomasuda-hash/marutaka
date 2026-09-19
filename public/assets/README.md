@@ -1,27 +1,35 @@
 # 画像素材の配置
 
-## FVの背景について（現在はイラスト）
+## FVの背景について（現在は支給画像）
 
-FVの背景は、修正指示書の「バックを差し替えて欲しい」に合わせて
-**フラットカラーのイラスト（SVG）** に切り替えています。
+FVの背景には、ご支給いただいた施工シーンの画像を使用しています。
 
 ```
-public/assets/images/hero-illustration.svg      PC用（1600x900）
-public/assets/images/hero-illustration-sp.svg   SP用（820x1240）
+public/assets/images/hero-scene-pc.webp / .jpg   PC用 1600x900（横長クロップ）
+public/assets/images/hero-scene-sp.webp / .jpg   SP用 760x1520（縦長クロップ）
 ```
 
-- ベクターなのでどの解像度でも滲まず、2ファイル合わせて約80KBです。
-- 配色はサイトのブランドカラー（グリーン／アンバー／ティール）に揃えています。
-  色を変えたい場合は生成元の `pal.py` 相当の値ではなく、SVG内の
-  `fill` / `stroke` を置換してください。
-- 白地のイラストなので、FVの文字色を白から緑／濃灰へ変更し、
-  暗くするスクリム（`.hero-scrim`）を白のベール（`.hero-veil`）に置き換えています。
-- 線の色は `src/.../art` の生成スクリプトではなくSVG内の `.s { stroke }` で指定。
-  濃さを変えたい場合はSVGの `stroke` 値を置換してください。
+- WebPを優先し、非対応ブラウザにはJPEGを返します（CSSの `image-set`）。
+  実測でPC 192KB / SP 101KB。
+- 元画像は 1448x1086 の1点のみのため、PC・SPそれぞれに合わせて
+  トリミングしています。トリミング位置を変えたい場合はご連絡ください。
+- 白地の明るい写真のため、FVの文字は白ではなく緑／濃灰にし、
+  ベール（`.hero-veil`）と文字の白いグロー（`.hero-copy`）で可読性を確保しています。
+  コントラスト比は実測で見出し5.3:1、本文15:1以上（WCAG AA基準4.5:1を満たす）。
 
-**写真に戻す場合**は `src/app/globals.css` の `.hero-art` の `url()` を
-`hero.jpg` / `hero-pc.jpg` に戻し、`.hero-veil` を `.hero-scrim` に戻してください
-（写真ファイルは下記のとおり残してあります）。
+### 差し替え・切り替え
+
+同名ファイルを上書きすれば差し替わります。過去の案も残してあるので、
+`src/app/globals.css` の `.hero-art` の `url()` を変えるだけで戻せます。
+
+| 案 | ファイル |
+| --- | --- |
+| 支給画像（現在） | `hero-scene-pc/sp.webp` |
+| 線画イラスト | `hero-illustration.svg` / `hero-illustration-sp.svg` |
+| 建築写真（当初のデザイン） | `hero-pc.jpg` / `hero.jpg` |
+
+イラストや当初の写真に戻す場合は、`.hero-veil` と `.hero-copy` の
+濃さも合わせて見直してください。
 
 ## 配置済み
 

@@ -34,13 +34,13 @@ export default function Hero() {
 
       {/* copy block, anchored to the lower part of the frame as in the comp */}
       <div className="relative z-10 mx-auto flex min-h-[min(193vw,1150px)] w-full max-w-content flex-col justify-end px-6 pb-8 pt-32 sm:px-8 lg:min-h-[820px] lg:max-w-[1360px] lg:px-10 lg:pb-14">
-        <p className="mb-4 flex items-center gap-2 text-[13px] font-medium tracking-[0.22em] text-brown-700 lg:absolute lg:left-10 lg:top-12 lg:mb-0 lg:text-[15px]">
+        <p className="hero-copy mb-4 flex items-center gap-2 text-[13px] font-bold tracking-[0.22em] text-brown-700 lg:absolute lg:left-10 lg:top-12 lg:mb-0 lg:text-[15px]">
           <span aria-hidden="true">—</span>
           {hero.eyebrow}
           <span aria-hidden="true">—</span>
         </p>
 
-        <h1 className="font-serif text-green-700">
+        <h1 className="hero-copy font-serif text-green-700">
           {hero.titleLines.map((line) => (
             <span
               key={line}
@@ -51,7 +51,7 @@ export default function Hero() {
           ))}
         </h1>
 
-        <p className="mt-4 text-[clamp(12px,3.35vw,15px)] leading-[1.55] text-ink/80 lg:mt-6 lg:text-[17px]">
+        <p className="hero-copy mt-4 text-[clamp(12px,3.35vw,15px)] font-medium leading-[1.55] text-ink/85 lg:mt-6 lg:text-[17px]">
           {hero.leadLines.map((line) => (
             <span key={line} className="block">
               {line}
@@ -60,9 +60,9 @@ export default function Hero() {
         </p>
 
         {/* feature strip: 2 items + the tag, as revised */}
-        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2.5 whitespace-nowrap text-[clamp(11px,3.1vw,13px)] text-ink/85 lg:mt-14 lg:gap-x-7 lg:text-[15px]">
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2.5 whitespace-nowrap text-[clamp(11px,3.1vw,13px)] font-medium text-ink/90 lg:mt-14 lg:gap-x-7 lg:text-[15px]">
           {hero.points.map((point) => (
-            <p key={point}>・{point}</p>
+            <p key={point} className="hero-copy">・{point}</p>
           ))}
           <p>
             <span className="inline-block rounded-[3px] bg-green-800/90 px-2.5 py-1 font-medium tracking-wide">

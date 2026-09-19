@@ -28,33 +28,53 @@
    * FV の背景イラスト（手描き風の線画 / SVG）。
    * 写真に戻す場合は url() を hero.jpg / hero-pc.jpg に差し替えるだけでよい。
    */
+  /*
+   * FV の背景。支給された施工シーンの画像を使用。
+   * 差し替えは同名ファイルの上書き、または url() の変更だけでよい
+   * （線画イラスト版 hero-illustration*.svg、写真版 hero*.jpg も残してある）。
+   */
   .hero-art {
-    background-image: url('/assets/images/hero-illustration-sp.svg');
+    /* 1行目は image-set 非対応ブラウザ向けのフォールバック */
+    background-image: url('/assets/images/hero-scene-sp.jpg');
+    background-image: image-set(
+      url('/assets/images/hero-scene-sp.webp') type('image/webp'),
+      url('/assets/images/hero-scene-sp.jpg') type('image/jpeg')
+    );
     background-size: cover;
-    background-position: center bottom;
+    background-position: center top;
     background-repeat: no-repeat;
-    background-color: #ffffff;
+    background-color: #f4f6f7;
   }
 
   @media (min-width: 1024px) {
     .hero-art {
-      background-image: url('/assets/images/hero-illustration.svg');
-      background-position: center bottom;
+      background-image: url('/assets/images/hero-scene-pc.jpg');
+      background-image: image-set(
+        url('/assets/images/hero-scene-pc.webp') type('image/webp'),
+        url('/assets/images/hero-scene-pc.jpg') type('image/jpeg')
+      );
+      background-position: center center;
     }
   }
 
-  /*
-   * 白地のイラストに文字が乗るため、暗くするのではなく
-   * 左（テキスト側）に白のベールをかけて可読性を確保する。
-   */
+  /* 写真の上でも文字が沈まないよう、白い滲みを重ねる。 */
+  .hero-copy {
+    text-shadow:
+      0 0 14px rgba(255, 255, 255, 0.95),
+      0 0 34px rgba(255, 255, 255, 0.85),
+      0 1px 2px rgba(255, 255, 255, 0.9);
+  }
+
   .hero-veil {
     /* PCは見出し・CTAが乗る左側の帯だけを白く抜く。
        左半分を一律に薄めると、背後の人物が透けて見えてしまうため。 */
+    /* 白で塗りつぶすと写真が消えるため、ベールは控えめにし、
+       文字側の白いグロー（.hero-copy）と併せて可読性を確保する。 */
     background-image: radial-gradient(
-      ellipse 62% 88% at 20% 54%,
-      rgba(255, 255, 255, 0.94) 0%,
-      rgba(255, 255, 255, 0.88) 42%,
-      rgba(255, 255, 255, 0.45) 72%,
+      ellipse 48% 66% at 21% 50%,
+      rgba(255, 255, 255, 0.84) 0%,
+      rgba(255, 255, 255, 0.7) 46%,
+      rgba(255, 255, 255, 0.26) 76%,
       rgba(255, 255, 255, 0) 100%
     );
   }
@@ -63,10 +83,10 @@
     .hero-veil {
       background-image: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.18) 0%,
-        rgba(255, 255, 255, 0.5) 38%,
-        rgba(255, 255, 255, 0.88) 60%,
-        rgba(255, 255, 255, 0.93) 100%
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0.38) 34%,
+        rgba(255, 255, 255, 0.9) 56%,
+        rgba(255, 255, 255, 0.95) 100%
       );
     }
   }
