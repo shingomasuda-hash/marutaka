@@ -1,4 +1,5 @@
 import { hero } from '@/data/content';
+import WrapLines from './WrapLines';
 
 /**
  * 01 FV.
@@ -51,12 +52,8 @@ export default function Hero() {
           ))}
         </h1>
 
-        <p className="hero-copy mt-4 text-[clamp(12px,3.35vw,15px)] font-medium leading-[1.55] text-ink/85 lg:mt-6 lg:text-[17px]">
-          {hero.leadLines.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+        <p className="hero-copy jp-head mt-4 text-[clamp(12px,3.35vw,15px)] font-medium leading-[1.7] text-ink/85 lg:mt-6 lg:text-[17px]">
+          <WrapLines lines={hero.leadLines} />
         </p>
 
         {/* feature strip: 2 items + the tag, as revised */}

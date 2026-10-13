@@ -96,9 +96,39 @@
     @apply inline-flex items-center justify-center rounded-full border px-5 py-1.5 text-[11px] font-bold tracking-[0.08em] sm:px-6 sm:py-2 sm:text-xs;
   }
 
-  /* Body copy inside the green sections is centred and generously leaded. */
+  /* Body copy inside the green sections is generously leaded. */
   .prose-green p {
     line-height: 2.05;
+  }
+
+  /*
+   * 日本語の折り返し制御 ---------------------------------------------------
+   *
+   * 強制改行（<br>）を使わず、画面幅に応じて「意味のまとまり」で折り返すための
+   * 共通ユーティリティ。word-break: auto-phrase は未対応ブラウザでは単に無視され、
+   * 通常の禁則処理つき折り返しになる（劣化しても崩れない）。
+   */
+
+  /* 見出し用。行長を均等化して「1〜2文字だけの行」を防ぐ。 */
+  .jp-head {
+    word-break: auto-phrase;
+    text-wrap: balance;
+    line-break: strict;
+  }
+
+  /* 本文用。最終行に数文字だけ取り残されるのを防ぐ。 */
+  .jp-body {
+    word-break: auto-phrase;
+    text-wrap: pretty;
+    line-break: strict;
+  }
+
+  /*
+   * 意味のまとまりを 1 つの塊として並べるためのセグメント。
+   * 横幅が足りればそのまま横に連なり、足りなければ塊の境目で改行される。
+   */
+  .jp-seg {
+    display: inline-block;
   }
 }
 

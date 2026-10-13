@@ -1,5 +1,6 @@
 import { entry } from '@/data/content';
 import Reveal from './Reveal';
+import WrapLines from './WrapLines';
 import EntryForm from './EntryForm';
 
 /** 11 エントリーCTA + フォーム */
@@ -12,19 +13,11 @@ export default function EntrySection() {
       <div className="mx-auto max-w-narrow px-6 sm:px-8 lg:px-10">
         <Reveal className="flex flex-col items-center text-center text-white">
           <span className="chip-outline border-white/70 bg-transparent text-white">{entry.chip}</span>
-          <h2 className="mt-6 text-[clamp(23px,5.4vw,32px)] font-bold leading-[1.5] lg:mt-8 lg:text-[40px]">
-            {entry.headingLines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
+          <h2 className="jp-head mt-6 text-[clamp(23px,5.4vw,32px)] font-bold leading-[1.5] lg:mt-8 lg:text-[40px]">
+            <WrapLines lines={entry.headingLines} />
           </h2>
-          <p className="mt-4 text-[11.5px] leading-[1.9] text-white/85 sm:text-sm lg:mt-6 lg:text-base">
-            {entry.leadLines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
+          <p className="jp-head mt-4 text-[12.5px] leading-[1.9] text-white/85 sm:text-sm lg:mt-6 lg:text-base">
+            <WrapLines lines={entry.leadLines} />
           </p>
         </Reveal>
 

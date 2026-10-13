@@ -1,5 +1,6 @@
 import { reasons } from '@/data/content';
 import Reveal from './Reveal';
+import WrapLines from './WrapLines';
 import SectionChip from './SectionChip';
 import Skyline from './decor/Skyline';
 
@@ -24,14 +25,10 @@ export default function Reasons() {
       <div className="relative mx-auto max-w-content px-6 pb-24 pt-14 sm:px-8 lg:px-10 lg:pb-36 lg:pt-24">
         <Reveal className="flex flex-col items-center text-center text-white">
           <SectionChip tone="light">{reasons.chip}</SectionChip>
-          <h2 className="mt-5 text-[clamp(26px,6.2vw,36px)] font-bold leading-[1.45] lg:mt-7 lg:text-[44px]">
-            {reasons.headingLines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
+          <h2 className="jp-head mt-5 text-[clamp(26px,6.2vw,36px)] font-bold leading-[1.45] lg:mt-7 lg:text-[44px]">
+            <WrapLines lines={reasons.headingLines} />
           </h2>
-          <p className="mt-4 text-[12px] tracking-wide text-white/85 lg:mt-6 lg:text-base">
+          <p className="jp-head mt-4 text-[12.5px] tracking-wide text-white/85 lg:mt-6 lg:text-base">
             {reasons.lead}
           </p>
         </Reveal>
@@ -51,14 +48,10 @@ export default function Reasons() {
                   {item.no}
                 </span>
                 <div className="flex-1 pt-1">
-                  <h3 className="text-[17px] font-bold leading-[1.45] text-white sm:text-xl lg:text-[23px]">
-                    {item.titleLines.map((line) => (
-                      <span key={line} className="block">
-                        {line}
-                      </span>
-                    ))}
+                  <h3 className="jp-head text-[17px] font-bold leading-[1.5] text-white sm:text-xl lg:text-[23px]">
+                    <WrapLines lines={item.titleLines} />
                   </h3>
-                  <p className="mt-3 text-[13.5px] leading-[1.85] text-white/90 lg:mt-4 lg:text-[15px]">
+                  <p className="jp-body mt-3 max-w-[34em] text-[13.5px] leading-[1.9] text-white/90 lg:mt-4 lg:text-[15px]">
                     {item.body}
                   </p>
                 </div>

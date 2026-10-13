@@ -33,7 +33,7 @@ export default function EntryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate={false} className="mx-auto mt-10 w-full max-w-[520px] space-y-5 lg:mt-14 lg:max-w-none lg:space-y-7">
+    <form onSubmit={handleSubmit} noValidate={false} className="mx-auto mt-10 w-full max-w-[520px] space-y-5 lg:mt-14 lg:max-w-[680px] lg:space-y-7">
       {entry.fields.map((field) => {
         const id = `entry-${field.name}`;
         return (

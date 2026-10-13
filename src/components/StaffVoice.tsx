@@ -1,5 +1,6 @@
 import { staffVoice } from '@/data/content';
 import Reveal from './Reveal';
+import WrapLines from './WrapLines';
 import SectionChip from './SectionChip';
 import VideoPlayer from './VideoPlayer';
 import { videoSources } from '@/data/videos';
@@ -12,12 +13,8 @@ export default function StaffVoice() {
       <div className="mx-auto max-w-content px-6 sm:px-8 lg:px-10">
         <Reveal className="flex flex-col items-center text-center">
           <SectionChip tone="brown">{staffVoice.chip}</SectionChip>
-          <h2 className="mt-5 text-[clamp(25px,6.2vw,36px)] font-bold leading-[1.45] text-green-700 [text-shadow:1px_2px_0_rgba(0,0,0,0.10)] lg:mt-7 lg:text-[42px]">
-            {staffVoice.headingLines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
+          <h2 className="jp-head mt-5 text-[clamp(25px,6.2vw,36px)] font-bold leading-[1.45] text-green-700 [text-shadow:1px_2px_0_rgba(0,0,0,0.10)] lg:mt-7 lg:text-[42px]">
+            <WrapLines lines={staffVoice.headingLines} />
           </h2>
           <VideoKicker className="mt-5 text-ink lg:mt-8">{staffVoice.videoKicker}</VideoKicker>
         </Reveal>

@@ -26,7 +26,7 @@ function Item({ q, a, index }: { q: string; a: string; index: number }) {
           >
             Q
           </span>
-          <span className="flex-1 text-[15.5px] font-medium leading-[1.6] text-ink lg:text-[19px]">
+          <span className="jp-head flex-1 text-[15.5px] font-medium leading-[1.65] text-ink lg:text-[19px]">
             {q}
           </span>
           <span
@@ -53,7 +53,7 @@ function Item({ q, a, index }: { q: string; a: string; index: number }) {
         style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
       >
         <div className="overflow-hidden">
-          <p className="px-4 pb-6 pl-[52px] text-[13.5px] leading-[1.9] text-black/70 lg:px-8 lg:pb-8 lg:pl-[86px] lg:text-[15px]">
+          <p className="jp-body max-w-[36em] px-4 pb-6 pl-[52px] text-[13.5px] leading-[1.95] text-black/70 lg:px-8 lg:pb-8 lg:pl-[86px] lg:text-[15px]">
             {a}
           </p>
         </div>

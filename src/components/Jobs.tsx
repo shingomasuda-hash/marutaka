@@ -8,16 +8,18 @@ import DotGrid from './decor/DotGrid';
 
 function Row({ row }: { row: JobRow }) {
   return (
-    <div className="grid grid-cols-[86px_1fr] gap-x-3 border-b border-black/[0.08] py-4 last:border-b-0 lg:grid-cols-[150px_1fr] lg:gap-5 lg:py-6">
-      <dt className="text-[13.5px] font-bold leading-[1.5] text-ink lg:text-[17px]">{row.label}</dt>
-      <dd className="min-w-0">
+    <div className="border-b border-black/[0.08] py-4 last:border-b-0 lg:grid lg:grid-cols-[132px_1fr] lg:gap-5 lg:py-6">
+      <dt className="jp-head text-[13.5px] font-bold leading-[1.55] text-brown-600 lg:text-[17px] lg:text-ink">
+        {row.label}
+      </dt>
+      <dd className="mt-1.5 min-w-0 lg:mt-0">
         {row.lead ? (
-          <p className="text-[15px] font-bold leading-[1.5] text-ink lg:text-[19px]">{row.lead}</p>
+          <p className="jp-head max-w-[34em] text-[15px] font-bold leading-[1.55] text-ink lg:text-[19px]">{row.lead}</p>
         ) : null}
         {row.blocks.map((block, i) => (
           <div key={i} className={row.lead || i > 0 ? 'mt-1.5 lg:mt-2.5' : ''}>
             {block.map((line) => (
-              <p key={line} className="text-[13.5px] leading-[1.5] text-black/65 lg:text-[15px]">
+              <p key={line} className="jp-body max-w-[42em] text-[13.5px] leading-[1.7] text-black/65 lg:text-[15px]">
                 {line}
               </p>
             ))}
@@ -54,9 +56,9 @@ export default function Jobs() {
       <div className="relative mx-auto max-w-content px-6 sm:px-8 lg:px-10">
         <Reveal className="flex flex-col items-center text-center">
           <SectionChip tone="brown">{jobsSection.chip}</SectionChip>
-          <h2 className="mt-5 text-[clamp(25px,6.3vw,37px)] font-bold leading-[1.45] text-ink [text-shadow:1px_2px_0_rgba(0,0,0,0.10)] lg:mt-7 lg:text-[42px]">
-            <span className="block">{jobsSection.headingLines[0]}</span>
-            <span className="block">
+          <h2 className="jp-head mt-5 text-[clamp(25px,6.3vw,37px)] font-bold leading-[1.45] text-ink [text-shadow:1px_2px_0_rgba(0,0,0,0.10)] lg:mt-7 lg:text-[42px]">
+            <span className="jp-seg">{jobsSection.headingLines[0]}</span>
+            <span className="jp-seg">
               <span className="text-green-600">ポジション</span>を探してください
             </span>
           </h2>
@@ -79,7 +81,7 @@ export default function Jobs() {
                 aria-selected={selected}
                 aria-controls={`${baseId}-panel-${job.id}`}
                 onClick={() => setActiveId(job.id)}
-                className={`rounded-lg px-3 py-4 text-[clamp(16px,4.2vw,22px)] font-bold text-white transition-colors duration-200 lg:py-5 lg:text-xl ${
+                className={`rounded-lg px-2.5 py-4 text-[clamp(14px,4.2vw,22px)] font-bold text-white transition-colors duration-200 lg:py-5 lg:text-xl ${
                   selected
                     ? 'bg-[linear-gradient(100deg,#01913a_0%,#157c47_100%)] shadow-md'
                     : 'bg-green-300 hover:bg-green-400'
@@ -99,10 +101,10 @@ export default function Jobs() {
             aria-labelledby={`${baseId}-tab-${active.id}`}
             className="mt-6 rounded-2xl bg-white px-5 py-7 shadow-[0_10px_30px_rgba(0,0,0,0.06)] lg:mt-9 lg:px-14 lg:py-12"
           >
-            <h3 className="text-[clamp(26px,5.6vw,32px)] font-bold text-ink [text-shadow:1px_2px_0_rgba(0,0,0,0.10)] lg:text-[36px]">
+            <h3 className="jp-head text-[clamp(16px,4.6vw,26px)] font-bold leading-[1.5] text-ink [text-shadow:1px_2px_0_rgba(0,0,0,0.10)] lg:text-[32px]">
               {active.title}
             </h3>
-            <p className="mt-1 text-[14px] font-bold text-ink lg:text-[19px]">{active.subtitle}</p>
+            <p className="jp-head mt-2 text-[14px] font-bold leading-[1.6] text-ink lg:text-[19px]">{active.subtitle}</p>
 
             <dl className="mt-6 lg:mt-9">
               {/* 仕事内容 runs full width; the remaining rows sit in two

@@ -1,5 +1,6 @@
 import { philosophy } from '@/data/content';
 import Reveal from './Reveal';
+import WrapLines from './WrapLines';
 import SectionChip from './SectionChip';
 import VideoPlayer from './VideoPlayer';
 import { videoSources } from '@/data/videos';
@@ -26,18 +27,15 @@ export default function Philosophy() {
       <div className="relative mx-auto max-w-narrow px-6 pb-14 pt-14 text-white sm:px-8 lg:px-10 lg:pb-24 lg:pt-24">
         <Reveal className="flex flex-col items-center text-center">
           <SectionChip tone="light">{philosophy.chip}</SectionChip>
-          <h2 className="mt-5 text-[clamp(23px,5.4vw,32px)] font-bold leading-[1.5] [text-shadow:1px_2px_6px_rgba(0,0,0,0.25)] lg:mt-7 lg:text-[40px]">
-            {philosophy.headingLines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
+          <h2 className="jp-head mt-5 text-[clamp(18px,4.8vw,30px)] font-bold leading-[1.55] [text-shadow:1px_2px_6px_rgba(0,0,0,0.25)] lg:mt-7 lg:text-[32px]">
+            <WrapLines lines={philosophy.headingLines} />
           </h2>
         </Reveal>
 
-        <Reveal delay={80} className="prose-green mx-auto mt-8 max-w-[500px] text-center lg:mt-12 lg:max-w-none">
+        {/* ブロック自体は中央配置のまま、中の長文は左揃えにする。 */}
+        <Reveal delay={80} className="prose-green mx-auto mt-8 max-w-[560px] text-left lg:mt-12 lg:max-w-[720px]">
           {philosophy.body.map((para) => (
-            <p key={para.slice(0, 12)} className="mb-5 text-[14.5px] text-white/95 lg:text-[16px]">
+            <p key={para.slice(0, 12)} className="jp-body mb-5 text-[14.5px] text-white/95 lg:text-[16px]">
               {para}
             </p>
           ))}
@@ -46,7 +44,7 @@ export default function Philosophy() {
         <Reveal delay={140}>
           <blockquote className="mx-auto mt-6 max-w-[560px] border-l-2 border-white/45 pl-5 text-left lg:mt-10 lg:pl-7">
             {philosophy.quoteLines.map((line) => (
-              <p key={line} className="text-[14px] leading-[1.95] text-white lg:text-[16px]">
+              <p key={line} className="jp-body text-[14px] leading-[1.95] text-white lg:text-[16px]">
                 {line}
               </p>
             ))}
