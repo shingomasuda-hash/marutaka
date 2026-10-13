@@ -49,7 +49,7 @@ export const videoSources = {
   oneDay: {
     url:
       process.env.NEXT_PUBLIC_VIDEO_ONE_DAY ??
-      'https://youtube.com/shorts/hZNpuIZch0w',
+      'https://youtube.com/shorts/N6ZAEqnUtDw',
     src: '/videos/web/one-day.mp4',
   },
   /** 06 わたしたちの想い ← 代表挨拶.mp4 */
