@@ -130,6 +130,23 @@
   .jp-seg {
     display: inline-block;
   }
+
+  /*
+   * 単語・語句の途中で絶対に改行させたくない箇所（職種名・項目名など）。
+   *
+   * keep-all は仮名・漢字どうしの改行を禁止するので、改行は「・」「／」のあと、
+   * 「（」のまえ といった区切りでしか起こらない。auto-phrase と違い Safari /
+   * Firefox でも効くため、「インテリア事業／部・…」のような不自然な分割が
+   * どのブラウザでも起きない。
+   *
+   * overflow-wrap: anywhere は最後の逃げ道で、どうしても 1 行に収まらない塊だけ
+   * 途中で折り返す（横にはみ出させない）。
+   */
+  .jp-keep {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    line-break: strict;
+  }
 }
 
 /* Scroll-reveal: elements start hidden and are revealed by IntersectionObserver. */

@@ -6,15 +6,37 @@ import Reveal from './Reveal';
 import SectionChip from './SectionChip';
 import DotGrid from './decor/DotGrid';
 
+/**
+ * 語句の途中で改行させない（.jp-keep）扱いにしてよいかを判定する。
+ *
+ * .jp-keep は「・」「／」のあと、「（」のまえ でしか改行しないので、
+ * 区切りのない一続きの塊が 1 行に収まらないと途中で折り返してしまう。
+ * 最も狭い場面（SP 320px / PC の 2 段組）でも 15 文字前後は入るため、
+ * 塊の最大長が 14 文字以内のものだけを .jp-keep にし、
+ * それより長い一文は文節折り返し（.jp-head）に任せる。
+ */
+const KEEP_MAX_RUN = 14;
+
+function canKeepWhole(text: string) {
+  const runs = text.split(/(?<=[・／/])|(?=[（(])/).filter(Boolean);
+  return runs.every((run) => run.length <= KEEP_MAX_RUN);
+}
+
 function Row({ row }: { row: JobRow }) {
   return (
     <div className="border-b border-black/[0.08] py-4 last:border-b-0 lg:grid lg:grid-cols-[132px_1fr] lg:gap-5 lg:py-6">
-      <dt className="jp-head text-[13.5px] font-bold leading-[1.55] text-brown-600 lg:text-[17px] lg:text-ink">
+      <dt className="jp-keep text-[13.5px] font-bold leading-[1.55] text-brown-600 lg:text-[16px] lg:text-ink">
         {row.label}
       </dt>
       <dd className="mt-1.5 min-w-0 lg:mt-0">
         {row.lead ? (
-          <p className="jp-head max-w-[34em] text-[15px] font-bold leading-[1.55] text-ink lg:text-[19px]">{row.lead}</p>
+          <p
+            className={`max-w-[34em] text-[15px] font-bold leading-[1.55] text-ink lg:text-[19px] ${
+              canKeepWhole(row.lead) ? 'jp-keep' : 'jp-head'
+            }`}
+          >
+            {row.lead}
+          </p>
         ) : null}
         {row.blocks.map((block, i) => (
           <div key={i} className={row.lead || i > 0 ? 'mt-1.5 lg:mt-2.5' : ''}>
@@ -81,7 +103,7 @@ export default function Jobs() {
                 aria-selected={selected}
                 aria-controls={`${baseId}-panel-${job.id}`}
                 onClick={() => setActiveId(job.id)}
-                className={`rounded-lg px-2.5 py-4 text-[clamp(14px,4.2vw,22px)] font-bold text-white transition-colors duration-200 lg:py-5 lg:text-xl ${
+                className={`rounded-lg jp-keep px-2.5 py-4 text-[clamp(13px,4.2vw,22px)] font-bold text-white transition-colors duration-200 lg:py-5 lg:text-xl ${
                   selected
                     ? 'bg-[linear-gradient(100deg,#01913a_0%,#157c47_100%)] shadow-md'
                     : 'bg-green-300 hover:bg-green-400'
@@ -101,10 +123,10 @@ export default function Jobs() {
             aria-labelledby={`${baseId}-tab-${active.id}`}
             className="mt-6 rounded-2xl bg-white px-5 py-7 shadow-[0_10px_30px_rgba(0,0,0,0.06)] lg:mt-9 lg:px-14 lg:py-12"
           >
-            <h3 className="jp-head text-[clamp(16px,4.6vw,26px)] font-bold leading-[1.5] text-ink [text-shadow:1px_2px_0_rgba(0,0,0,0.10)] lg:text-[32px]">
+            <h3 className="jp-keep text-balance text-[clamp(15px,calc((100vw-96px)/15.5),26px)] font-bold leading-[1.5] text-ink [text-shadow:1px_2px_0_rgba(0,0,0,0.10)] lg:text-[32px]">
               {active.title}
             </h3>
-            <p className="jp-head mt-2 text-[14px] font-bold leading-[1.6] text-ink lg:text-[19px]">{active.subtitle}</p>
+            <p className="jp-keep text-balance mt-2 text-[14px] font-bold leading-[1.6] text-ink lg:text-[19px]">{active.subtitle}</p>
 
             <dl className="mt-6 lg:mt-9">
               {/* 仕事内容 runs full width; the remaining rows sit in two
